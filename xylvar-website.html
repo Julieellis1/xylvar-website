@@ -380,6 +380,25 @@ footer ul{display:grid;gap:10px;font-size:.96rem}
   .foot-grid{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01ms!important}}
+
+  .photo-banner{margin:0}
+  .photo-banner img{display:block;width:100%;height:clamp(260px,42vw,520px);object-fit:cover}
+  .photo-banner figcaption,.photo-card figcaption{padding:14px 20px;background:var(--spruce-950);color:#e8efe9;font-size:15px}
+  .photo-strip{margin:clamp(28px,4vw,48px) 0 0}
+  .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .photo-card{margin:0;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:#fff}
+  .photo-card img{display:block;width:100%;height:280px;object-fit:cover}
+  .photo-card figcaption{background:var(--paper);color:var(--ink-2);border-top:1px solid var(--line)}
+  .chart-card{border:1px solid var(--line);border-radius:var(--r-lg);background:#fff;padding:22px;margin-top:24px}
+  .chart-card h3{margin:0 0 6px}
+  .chart-note{color:var(--ink-2);font-size:15px;margin:0 0 16px}
+  .chart-bars{display:flex;align-items:flex-end;gap:8px;height:180px;border-bottom:2px solid var(--ink);padding-top:10px}
+  .chart-bars div{flex:1;background:var(--moss);border-radius:6px 6px 0 0;min-height:8px}
+  .chart-bars div:nth-child(odd){background:var(--spruce-700)}
+  .chart-bars div:hover{background:var(--saffron-deep)}
+  .chart-labels{display:flex;gap:8px;font-size:12px;color:var(--ink-3);margin-top:8px}
+  .chart-labels span{flex:1;text-align:center}
+  @media(max-width:700px){.photo-grid{grid-template-columns:1fr}.photo-card img{height:220px}}
 </style>
 <noscript><style>.faq-a{grid-template-rows:1fr}.faq-a>div{visibility:visible}.mobileMenu{display:block}nav.main{display:none}.mock-body[hidden],.audit-panel[hidden]{display:block!important}.audit-panel{margin-bottom:16px}</style></noscript>
 </head>
@@ -501,7 +520,8 @@ footer ul{display:grid;gap:10px;font-size:.96rem}
   </div>
 </section>
 
-<!-- SERVICES -->
+<figure class="photo-banner"><img src="images/hero-shop.webp" alt="A small business owner standing outside their shop, holding a phone" width="1600" height="1066" fetchpriority="high"><figcaption>The kind of business xylvar helps: local, independent, and found when customers search.</figcaption></figure>
+  <!-- SERVICES -->
 <section class="section section--paper" id="services">
   <div class="wrap">
     <div class="section-head">
@@ -557,7 +577,11 @@ footer ul{display:grid;gap:10px;font-size:.96rem}
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<div class="wrap photo-strip"><div class="photo-grid">
+  <figure class="photo-card"><img src="images/local-business.webp" alt="Customers being served inside a busy local business" width="1600" height="1066" loading="lazy"><figcaption>Search brings people through the door. The work is making sure they find you first.</figcaption></figure>
+  <figure class="photo-card"><img src="images/audit-laptop.webp" alt="A person reviewing website results on a laptop" width="1600" height="1066" loading="lazy"><figcaption>An audit, reviewed in plain language, before any monthly work starts.</figcaption></figure>
+</div></div>
+  <!-- HOW IT WORKS -->
 <section class="section section--paper section--flush-top" id="how-it-works">
   <div class="wrap">
     <div class="section-head">
@@ -678,6 +702,9 @@ footer ul{display:grid;gap:10px;font-size:.96rem}
       <h2>See the quality of the work before you pay for it.</h2>
       <p class="section-intro">A sample audit is available on request. It is clearly labelled as a sample, and the sample business is never presented as a client. Nothing is published without the owner's approval and, where a real business is named, that business's permission.</p>
     </div>
+    <div class="chart-card"><h3>What a monthly report chart looks like</h3><p class="chart-note">Illustrative example only. This shows the shape of a report, not a client result and not a promise of rankings.</p><div class="chart-bars" role="img" aria-label="Illustrative bar chart showing search visibility rising unevenly over 12 weeks">
+  <div style="height:18%"></div><div style="height:24%"></div><div style="height:22%"></div><div style="height:34%"></div><div style="height:31%"></div><div style="height:44%"></div><div style="height:41%"></div><div style="height:55%"></div><div style="height:52%"></div><div style="height:66%"></div><div style="height:63%"></div><div style="height:78%"></div>
+</div><div class="chart-labels"><span>Week 1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div><p class="chart-note" style="margin:16px 0 0">Search visibility, illustrative index. Real reports show your own numbers, with what was done that month.</p></div>
     <div class="audit-layout">
       <div class="audit-tabs" role="tablist" aria-label="What an audit covers" aria-orientation="vertical">
         <button class="audit-tab" role="tab" aria-selected="true" aria-controls="ap1" id="at1" data-panel="ap1"><b>Website structure</b><span>Headings, titles, pages and how the site is put together.</span></button>
@@ -799,7 +826,8 @@ footer ul{display:grid;gap:10px;font-size:.96rem}
   </div>
 </section>
 
-<!-- CONTACT -->
+<div class="wrap photo-strip"><figure class="photo-card"><img src="images/workspace-desk.webp" alt="A desk with a laptop, notebook, phone and plant" width="1600" height="1066" loading="lazy"><figcaption>The work is done by the owner, not handed off unseen.</figcaption></figure></div>
+  <!-- CONTACT -->
 <section class="section" id="contact">
   <div class="wrap contact-grid">
     <div class="contact-info">
