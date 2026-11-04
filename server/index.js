@@ -9,6 +9,10 @@
  *   GET  /api/newsletter/unsubscribe?id=..&t=.. - one-click unsubscribe
  *   GET  /api/admin/leads | subscribers | email-log - token-protected
  *   GET  /api/health      - storage mode + whether email is configured
+ *   GET  /audit           - dedicated audit download page (noindex)
+ *   GET  /api/audit       - lookup one audit by its download code (noindex)
+ *   GET  /api/audit/download - stream one audit PDF by code (noindex)
+ *   POST /api/admin/audits, GET /api/admin/audits - seed and list audits, token-protected
  *
  * Storage: Postgres when DATABASE_URL is set (the Dokploy setup), with
  * tables created on boot. Without DATABASE_URL it falls back to a local
@@ -100,6 +104,15 @@ async function initStorage() {
         to_address TEXT NOT NULL, subject TEXT NOT NULL, tag TEXT NOT NULL,
         status TEXT NOT NULL, provider_message_id TEXT, error TEXT,
         created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+      );
+      CREATE TABLE IF NOT EXISTS audit_downloads (
+        code TEXT PRIMARY KEY,
+        business TEXT NOT NULL, website TEXT NOT NULL, report_date TEXT NOT NULL,
+        pdf_file TEXT NOT NULL, title TEXT NOT NULL, pages INT NOT NULL,
+        findings JSONB NOT NULL DEFAULT '[]'::jsonb,
+        download_count INT NOT NULL DEFAULT 0,
+        last_downloaded_at TIMESTAMPTZ,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT now()
       );`);
     storageMode = "postgres";
   }
@@ -189,6 +202,181 @@ async function listTable(table, limit = 500) {
   }
   const d = fileData();
   return [...(d[table] || [])].reverse().slice(0, limit);
+}
+
+// ---------- audit downloads ----------
+// A download code is a lookup key for a complimentary report, not identity
+// verification, and it is not secure access. Anyone who has the email has
+// the code, so it only selects which audit to show, it never proves who
+// the visitor is. PDF files live under server/audits/ and are read from
+// disk by the server only. They are never added to the static allowlist,
+// so a direct request to a file path returns 404.
+const AUDIT_DIR = path.join(__dirname, "audits");
+const AUDIT_CODE_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+const auditCodeOk = (v) => /^[A-HJ-NP-Z2-9]{8}$/.test(String(v || "").trim().toUpperCase());
+function generateAuditCode() {
+  let code = "";
+  for (let i = 0; i < 8; i++) code += AUDIT_CODE_CHARS[crypto.randomInt(AUDIT_CODE_CHARS.length)];
+  return code;
+}
+function auditHost(website) {
+  let s = String(website || "").trim();
+  if (!/^https?:\/\//i.test(s)) s = "https://" + s;
+  try {
+    return new URL(s).hostname.toLowerCase();
+  } catch {
+    return null;
+  }
+}
+function auditPublic(a) {
+  if (!a) return null;
+  return {
+    business: a.business, website: a.website, report_date: a.report_date,
+    title: a.title, pages: a.pages, findings: a.findings,
+  };
+}
+async function getAudit(code) {
+  const c = String(code || "").trim().toUpperCase();
+  if (!auditCodeOk(c)) return null;
+  if (pool) {
+    const r = await pool.query(`SELECT * FROM audit_downloads WHERE code = $1`, [c]);
+    return r.rows[0] || null;
+  }
+  const d = fileData();
+  return (d.audit_downloads || []).find((a) => a.code === c) || null;
+}
+async function insertAudit(a) {
+  if (pool) {
+    await pool.query(
+      `INSERT INTO audit_downloads (code, business, website, report_date, pdf_file, title, pages, findings)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
+      [a.code, a.business, a.website, a.report_date, a.pdf_file, a.title, a.pages, JSON.stringify(a.findings)],
+    );
+    return;
+  }
+  const d = fileData();
+  d.audit_downloads = d.audit_downloads || [];
+  d.audit_downloads.push({ ...a, download_count: 0, last_downloaded_at: null, created_at: new Date().toISOString() });
+  fileSave(d);
+}
+async function recordAuditDownload(code) {
+  const c = String(code || "").trim().toUpperCase();
+  if (pool) {
+    await pool.query(`UPDATE audit_downloads SET download_count = download_count + 1, last_downloaded_at = now() WHERE code = $1`, [c]);
+    return;
+  }
+  const d = fileData();
+  const a = (d.audit_downloads || []).find((x) => x.code === c);
+  if (a) {
+    a.download_count = (a.download_count || 0) + 1;
+    a.last_downloaded_at = new Date().toISOString();
+    fileSave(d);
+  }
+}
+async function listAuditsAdmin() {
+  if (pool) {
+    const r = await pool.query(`SELECT code, business, website, report_date, download_count, last_downloaded_at FROM audit_downloads ORDER BY created_at DESC`);
+    return r.rows;
+  }
+  const d = fileData();
+  return [...(d.audit_downloads || [])].reverse().map((a) => ({
+    code: a.code, business: a.business, website: a.website, report_date: a.report_date,
+    download_count: a.download_count || 0, last_downloaded_at: a.last_downloaded_at || null,
+  }));
+}
+function validateAuditBody(b) {
+  const code = String(b.code || "").trim().toUpperCase();
+  if (!auditCodeOk(code)) return { error: "Code must be 8 characters, uppercase letters and digits, excluding O, I, 0 and 1." };
+  const business = String(b.business || "").trim();
+  if (!business || business.length > 200) return { error: "Business is required." };
+  const website = b.website ? validUrl(b.website) : null;
+  if (!website) return { error: "A valid website is required." };
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(b.report_date || ""))) return { error: "Report date must use YYYY-MM-DD." };
+  const pdf_file = String(b.pdf_file || "").trim();
+  if (!pdf_file || path.basename(pdf_file) !== pdf_file || !pdf_file.toLowerCase().endsWith(".pdf")) {
+    return { error: "pdf_file must be a plain PDF filename in server/audits/." };
+  }
+  if (!fs.existsSync(path.join(AUDIT_DIR, pdf_file))) return { error: "pdf_file is not present in server/audits/." };
+  const title = String(b.title || "").trim();
+  if (!title || title.length > 300) return { error: "Title is required." };
+  const pages = Number(b.pages);
+  if (!Number.isInteger(pages) || pages < 1) return { error: "Pages must be a positive whole number." };
+  const findings = Array.isArray(b.findings) ? b.findings.map((f) => String(f || "").trim()).filter(Boolean) : [];
+  if (findings.length < 1 || findings.length > 10) return { error: "Findings must be a list of 1 to 10 non-empty strings." };
+  return { value: { code, business, website, report_date: String(b.report_date), pdf_file, title, pages, findings } };
+}
+function auditPageHtml() {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Your audit download | xylvar</title>
+<style>
+body{font-family:Arial,sans-serif;background:#faf6ec;color:#141310;max-width:640px;margin:0 auto;padding:32px 20px;line-height:1.6}
+h1{font-size:26px} .card{background:#fff;border:1px solid #e4ddc9;border-radius:14px;padding:20px;margin:16px 0}
+label{display:block;margin:12px 0 4px;font-weight:bold} input{width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;font-size:16px}
+button,.btn{display:inline-block;background:#c8f31d;color:#141310;font-weight:bold;border:0;border-radius:999px;padding:12px 26px;font-size:16px;cursor:pointer;text-decoration:none}
+.err{color:#a02622} .muted{color:#6b6e62;font-size:14px}
+</style>
+</head>
+<body>
+<h1>Your audit is ready</h1>
+<p id="intro">Enter your website and code to download your report, or follow the link from your email.</p>
+<div id="error" class="err"></div>
+<form id="lookup" class="card">
+<label for="website">Website</label>
+<input id="website" name="website" type="text" placeholder="example.com" autocomplete="off">
+<label for="code">Download code</label>
+<input id="code" name="code" type="text" placeholder="8 character code" autocomplete="off">
+<p><button type="submit">Find my audit</button></p>
+</form>
+<div id="result" class="card" hidden>
+<h2 id="r-business"></h2>
+<p><span id="r-title"></span><br><span id="r-meta"></span></p>
+<ul id="r-findings"></ul>
+<p><a id="r-download" class="btn" href="#">Download PDF</a></p>
+<div id="next" hidden>
+<p><strong>Next step:</strong> reply to <a href="mailto:info@xylvar.top">info@xylvar.top</a>, or <a href="/#contact">talk through the fixes with us</a>.</p>
+</div>
+</div>
+<p class="muted">This code is a lookup key for a complimentary report. It is not identity verification and it is not secure access. If you did not ask for an audit, you can ignore this page.</p>
+<script>
+const errEl = document.getElementById("error");
+const form = document.getElementById("lookup");
+const result = document.getElementById("result");
+function showError(){ errEl.textContent = "That audit could not be found. Check the code and try again."; }
+async function lookup(code, website){
+  errEl.textContent = "";
+  const q = new URLSearchParams({ code });
+  if (website) q.set("website", website);
+  const res = await fetch("/api/audit?" + q.toString());
+  if (!res.ok){ showError(); return; }
+  const d = await res.json();
+  document.getElementById("intro").textContent = "Here is your report.";
+  form.hidden = true;
+  document.getElementById("r-business").textContent = d.business;
+  document.getElementById("r-title").textContent = d.title;
+  document.getElementById("r-meta").textContent = d.website + " | Report date: " + d.report_date + " | " + d.pages + " pages";
+  document.getElementById("r-findings").innerHTML = d.findings.map(function(f){
+    const li = document.createElement("li"); li.textContent = f; return li.outerHTML;
+  }).join("");
+  const dl = document.getElementById("r-download");
+  dl.href = "/api/audit/download?code=" + encodeURIComponent(code.toUpperCase());
+  dl.addEventListener("click", function(){ document.getElementById("next").hidden = false; }, { once: true });
+  result.hidden = false;
+}
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+  lookup(document.getElementById("code").value.trim(), document.getElementById("website").value.trim());
+});
+const params = new URLSearchParams(window.location.search);
+const pre = params.get("code");
+if (pre){ lookup(pre, ""); }
+</script>
+</body>
+</html>`;
 }
 
 // ---------- email (Resend) ----------
@@ -335,6 +523,57 @@ function requireAdmin(req, res, next) {
 app.get("/api/admin/leads", requireAdmin, async (_req, res) => res.json(await listTable("leads")));
 app.get("/api/admin/subscribers", requireAdmin, async (_req, res) => res.json(await listTable("subscribers")));
 app.get("/api/admin/email-log", requireAdmin, async (_req, res) => res.json(await listTable("email_log")));
+
+// ---------- audit download routes (noindex) ----------
+const AUDIT_NOT_FOUND = "That audit could not be found. Check the code and try again.";
+const noindex = (_req, res, next) => { res.setHeader("X-Robots-Tag", "noindex"); next(); };
+app.get("/audit", noindex, (_req, res) => {
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.send(auditPageHtml());
+});
+app.get("/api/audit", noindex, async (req, res) => {
+  const ip = req.ip || req.socket?.remoteAddress || "unknown";
+  if (rateLimited(ip, "audit-lookup", 30, 600_000)) return res.status(429).json({ status: "error", message: "Too many lookups from this address. Please wait a few minutes." });
+  const a = await getAudit(String(req.query.code || ""));
+  if (!a) return res.status(404).json({ status: "error", message: AUDIT_NOT_FOUND });
+  if (req.query.website !== undefined && String(req.query.website).trim()) {
+    if (auditHost(req.query.website) !== auditHost(a.website)) {
+      return res.status(404).json({ status: "error", message: AUDIT_NOT_FOUND });
+    }
+  }
+  res.json(auditPublic(a));
+});
+app.get("/api/audit/download", noindex, async (req, res) => {
+  const ip = req.ip || req.socket?.remoteAddress || "unknown";
+  if (rateLimited(ip, "audit-download", 10, 600_000)) return res.status(429).json({ status: "error", message: "Too many downloads from this address. Please wait a few minutes." });
+  const a = await getAudit(String(req.query.code || ""));
+  if (!a || path.basename(a.pdf_file) !== a.pdf_file) {
+    return res.status(404).json({ status: "error", message: AUDIT_NOT_FOUND });
+  }
+  const file = path.join(AUDIT_DIR, a.pdf_file);
+  if (!fs.existsSync(file)) return res.status(404).json({ status: "error", message: AUDIT_NOT_FOUND });
+  try {
+    await recordAuditDownload(a.code);
+  } catch (err) {
+    console.error("[audit] download record failed", err.message);
+  }
+  res.setHeader("Content-Type", "application/pdf");
+  res.setHeader("Content-Disposition", `attachment; filename="${a.pdf_file}"`);
+  fs.createReadStream(file).pipe(res);
+});
+app.post("/api/admin/audits", requireAdmin, async (req, res) => {
+  const v = validateAuditBody(req.body || {});
+  if (v.error) return res.status(400).json({ status: "error", message: v.error });
+  if (await getAudit(v.value.code)) return res.status(409).json({ status: "error", message: "That code is already in use." });
+  try {
+    await insertAudit(v.value);
+  } catch (err) {
+    console.error("[audit] insert failed", err.message);
+    return res.status(500).json({ status: "error", message: "The audit could not be saved." });
+  }
+  res.status(201).json(auditPublic(v.value));
+});
+app.get("/api/admin/audits", requireAdmin, async (_req, res) => res.json(await listAuditsAdmin()));
 
 // ---------- static site (allowlist only) ----------
 const ALLOWED = new Set(["index.html", "xylvar-website.html", "favicon.ico", "apple-touch-icon.png", "admin.html", ".nojekyll"]);
