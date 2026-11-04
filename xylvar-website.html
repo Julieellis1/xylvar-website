@@ -1,0 +1,1196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<meta name="theme-color" content="#0E2B26" />
+<meta name="description" content="xylvar helps businesses that need SEO, anywhere in the world, including Australia and Nigeria. Start with an audit, then monthly SEO work and a report by email." />
+<title>xylvar | SEO for businesses anywhere in the world</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 256 256%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%2346BC96%22/%3E%3Cstop offset=%22.55%22 stop-color=%22%232A8368%22/%3E%3Cstop offset=%221%22 stop-color=%22%23175443%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width=%22256%22 height=%22256%22 rx=%2256%22 fill=%22url%28%23g%29%22/%3E%3Cg transform=%22translate%280 0%29%22%3E%3Cg stroke=%22%23fff%22 stroke-width=%2215%22 stroke-linecap=%22round%22%3E%3Cline x1=%22128%22 y1=%22128%22 x2=%2276%22 y2=%2276%22/%3E%3Cline x1=%22128%22 y1=%22128%22 x2=%22180%22 y2=%2276%22/%3E%3Cline x1=%22128%22 y1=%22128%22 x2=%2276%22 y2=%22180%22/%3E%3Cline x1=%22128%22 y1=%22128%22 x2=%22180%22 y2=%22180%22/%3E%3C/g%3E%3Cg fill=%22%23fff%22%3E%3Ccircle cx=%2276%22 cy=%2276%22 r=%2217%22/%3E%3Ccircle cx=%22180%22 cy=%2276%22 r=%2217%22/%3E%3Ccircle cx=%2276%22 cy=%22180%22 r=%2217%22/%3E%3Ccircle cx=%22180%22 cy=%22180%22 r=%2217%22/%3E%3C/g%3E%3Ccircle cx=%22128%22 cy=%22128%22 r=%2224.5%22 fill=%22%23F2B33D%22/%3E%3C/g%3E%3C/svg%3E" />
+<link rel="alternate icon" href="favicon.ico" sizes="48x48" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"xylvar","url":"https://xylvar.top","email":"info@xylvar.top","founder":{"@type":"Person","name":"Adebiyi Thompson"},"description":"SEO service for businesses that need SEO, anywhere in the world, including Australia and Nigeria."}
+</script>
+<style>
+/* ============ Tokens ============ */
+:root{
+  --spruce-950:#08201c; --spruce-900:#0e2b26; --spruce-800:#16403a; --spruce-700:#1f564c;
+  --moss:#2c6b56; --moss-soft:#dbe8e0;
+  --mist:#edf1ec; --mist-2:#e2e9e3; --paper:#fbfcfa; --white:#fff;
+  --ink:#0c1a17; --ink-2:#44524d; --ink-3:#6b7873;
+  --line:#d3dbd5; --line-dark:rgba(255,255,255,.14);
+  --saffron:#f2b33d; --saffron-deep:#e19f22;
+  --red:#b3261e; --focus:#0e2b26;
+  --display:"Bricolage Grotesque","Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --text:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r-sm:10px; --r-md:14px; --r-lg:22px; --r-xl:28px;
+  --ease:cubic-bezier(.22,.8,.24,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--mist);color:var(--ink);font-family:var(--text);font-size:1.0625rem;line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;margin:0;letter-spacing:-.02em;line-height:1.08}
+h2{font-size:clamp(2.1rem,4.2vw,3.5rem);letter-spacing:-.03em;line-height:1.03}
+h3{font-size:1.4rem}
+p{margin:0}
+a{color:inherit}
+ul{margin:0;padding:0;list-style:none}
+svg.i{width:1em;height:1em;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
+.on-dark :focus-visible,.on-dark:focus-visible{outline-color:var(--saffron)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:300;background:var(--saffron);color:var(--ink);font-weight:700;padding:10px 16px;border-radius:var(--r-sm);text-decoration:none}
+.skip:focus{top:12px}
+
+/* ============ Buttons ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;font:600 1rem/1 var(--text);padding:17px 28px;border-radius:999px;transition:background-color .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease);white-space:nowrap}
+.btn .i{width:1.1em;height:1.1em;transition:transform .25s var(--ease)}
+.btn:hover .i{transform:translateX(3px)}
+.btn-sm{padding:12px 20px;font-size:.94rem}
+.btn-saffron{background:var(--saffron);color:var(--ink)}
+.btn-saffron:hover{background:#f7c25f}
+.btn-dark{background:var(--spruce-900);color:#fff}
+.btn-dark:hover{background:var(--spruce-700)}
+.btn-line{background:transparent;color:var(--ink);border-color:rgba(12,26,23,.35)}
+.btn-line:hover{border-color:var(--ink);background:rgba(12,26,23,.05)}
+.btn-line-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.38)}
+.btn-line-light:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* ============ Top notice + header ============ */
+.notice{background:var(--spruce-950);color:rgba(255,255,255,.72);font-size:.86rem;line-height:1.4;text-align:center;padding:9px 20px}
+.notice b{color:#fff;font-weight:600}
+header.site{position:sticky;top:0;z-index:100;background:rgba(14,43,38,.88);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line-dark);color:#fff;transition:background-color .25s}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
+.wordmark{display:inline-flex;align-items:center;gap:11px;text-decoration:none;color:inherit;line-height:1}
+.logo-icon{width:42px;height:42px;display:block;flex:0 0 auto}
+.logo-word{height:18px;width:auto;aspect-ratio:299.5/74.5;display:block;overflow:visible}
+nav.main{display:flex;gap:6px;align-items:center}
+nav.main a{text-decoration:none;font-weight:500;font-size:.95rem;color:rgba(255,255,255,.72);padding:9px 14px;border-radius:999px;transition:color .2s,background-color .2s}
+nav.main a:hover{color:#fff;background:rgba(255,255,255,.08)}
+nav.main a.active{color:#fff;background:rgba(255,255,255,.12)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+#menuBtn{display:none;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:10px 18px;font:600 .94rem var(--text);cursor:pointer}
+.mobileMenu{display:none;border-top:1px solid var(--line-dark);padding:8px 20px 22px;background:var(--spruce-900)}
+.mobileMenu.open{display:block}
+.mobileMenu a{display:flex;justify-content:space-between;align-items:center;padding:15px 0;font-weight:600;font-size:1.05rem;text-decoration:none;border-bottom:1px solid var(--line-dark);color:#fff}
+.mobileMenu a:last-child{border-bottom:0;margin-top:16px;justify-content:center;background:var(--saffron);color:var(--ink);border-radius:999px}
+
+/* ============ Hero ============ */
+.hero{background:var(--spruce-900);color:#fff;position:relative;overflow:hidden;isolation:isolate}
+.hero-rings{position:absolute;z-index:-1;right:-14%;top:-30%;width:1100px;max-width:none;opacity:1;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(40px,5vw,80px);align-items:center;padding-block:clamp(48px,6vw,88px) clamp(48px,6vw,80px)}
+.hero h1{font-size:clamp(2.7rem,5.3vw,4.7rem);font-weight:600;letter-spacing:-.045em;line-height:1;font-variation-settings:"opsz" 96}
+.lede{font-size:clamp(1.1rem,1.5vw,1.28rem);line-height:1.58;color:rgba(255,255,255,.74);max-width:33rem;margin-top:28px}
+.lede b{color:#fff;font-weight:600}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.hero-note{margin-top:28px;max-width:31rem;font-size:.97rem;line-height:1.55;color:rgba(255,255,255,.62);padding-left:18px;border-left:2px solid var(--saffron)}
+.hero-note b{color:#fff;font-weight:600}
+.sectors{border-top:1px solid var(--line-dark)}
+.sectors ul{display:flex;flex-wrap:wrap;align-items:stretch}
+.sectors li{flex:1 1 auto;text-align:center;padding:22px 18px;font-size:.96rem;font-weight:500;color:rgba(255,255,255,.7);border-left:1px solid var(--line-dark)}
+.sectors li:first-child{border-left:0}
+
+/* mock */
+.mock{background:var(--paper);color:var(--ink);border-radius:var(--r-xl);padding:12px;box-shadow:0 40px 80px -24px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08)}
+.mock-inner{background:var(--white);border-radius:calc(var(--r-xl) - 10px);border:1px solid var(--line);overflow:hidden}
+.mock-tabs{display:flex;gap:4px;padding:6px;margin:14px 14px 0;background:var(--mist);border-radius:999px;width:fit-content}
+.mock-tab{border:0;background:transparent;border-radius:999px;padding:9px 18px;font:600 .9rem var(--text);color:var(--ink-2);cursor:pointer;transition:background-color .2s,color .2s}
+.mock-tab[aria-selected="true"]{background:var(--spruce-900);color:#fff}
+.mock-search{display:flex;align-items:center;gap:12px;margin:14px 14px 0;padding:14px 18px;border:1.5px solid var(--line);border-radius:999px;font-weight:500;font-size:1.02rem;min-height:56px}
+.mock-search .i{color:var(--ink-3);width:1.15em;height:1.15em}
+.caret{display:inline-block;width:2px;height:1.15em;background:var(--moss);margin-left:2px;vertical-align:-.2em}
+@media (prefers-reduced-motion:no-preference){.caret{animation:blink 1.05s steps(1) infinite}}
+@keyframes blink{50%{opacity:0}}
+.mock-body{padding:16px 14px 6px;min-height:318px}
+.res{display:flex;gap:14px;padding:16px;border-radius:var(--r-md);border:1px solid var(--line);margin-bottom:10px}
+.res--you{background:#f3f8f3;border-color:#b9d3c3;box-shadow:inset 3px 0 0 var(--saffron)}
+.res-pin{width:38px;height:38px;border-radius:50%;background:var(--spruce-900);color:var(--saffron);display:grid;place-items:center;flex:0 0 auto}
+.res-pin .i{width:18px;height:18px}
+.res-title{font-weight:700;font-size:1.02rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:5px;background:var(--moss-soft);color:#15493a;border-radius:999px;font-size:.78rem;font-weight:700;padding:3px 10px}
+.res-url{font-size:.83rem;color:var(--moss);font-weight:600;margin-top:3px;line-height:1.4}
+.res-desc{font-size:.9rem;color:var(--ink-2);margin-top:6px;line-height:1.5}
+.res-checks{display:flex;gap:6px 14px;flex-wrap:wrap;margin-top:10px;font-size:.84rem;font-weight:600;color:var(--ink)}
+.res-checks li{display:flex;align-items:center;gap:6px}
+.res-checks .i{color:var(--moss);width:15px;height:15px;stroke-width:2.6}
+.res--ghost{align-items:center;opacity:.9}
+.res--ghost .res-pin{background:var(--mist-2);width:34px;height:34px}
+.ghost-bars{flex:1}
+.bar{height:9px;border-radius:99px;background:var(--mist-2);margin:7px 0}
+.bar.short{width:55%}.bar.mid{width:82%}
+.mock-note{font-size:.88rem;color:var(--ink-2);padding:6px 4px 14px;line-height:1.5}
+.ai-answer{background:linear-gradient(180deg,#f3f8f3,#eef5ef);border:1px solid #c6dccd;border-radius:var(--r-md);padding:18px;font-size:.97rem;line-height:1.58}
+.ai-head{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.9rem;color:var(--moss);margin-bottom:10px}
+.ai-head .i{width:18px;height:18px}
+.ai-answer b{font-weight:700;color:var(--spruce-800)}
+.sources{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.sources span{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:.84rem;font-weight:600}
+.sources span:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--saffron)}
+.mock-foot{font-size:.8rem;color:var(--ink-3);text-align:center;padding:12px 8px 6px}
+@media (prefers-reduced-motion:no-preference){
+  .hero h1,.lede,.hero-ctas,.hero-note{animation:rise .9s var(--ease) both}
+  .lede{animation-delay:.12s}.hero-ctas{animation-delay:.22s}.hero-note{animation-delay:.3s}
+  .mock{animation:rise 1.1s var(--ease) .2s both}
+  .hero-rings{animation:spin 240s linear infinite;transform-origin:50% 50%}
+  .mock-body>*{animation:fadein .5s var(--ease) both}
+}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============ Sections ============ */
+.section{padding:clamp(76px,9.5vw,132px) 0;scroll-margin-top:76px}
+.section--paper{background:var(--paper)}
+.section--flush-top{padding-top:0}
+.section-head{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px clamp(32px,6vw,96px);align-items:end;margin-bottom:clamp(40px,5vw,68px)}
+.section-head h2{text-wrap:balance}
+.section-intro{color:var(--ink-2);font-size:1.1rem;max-width:30rem}
+.moss-link{color:var(--moss);font-weight:700;text-underline-offset:4px}
+
+/* services */
+.svc{border-top:1px solid var(--ink)}
+.svc-row{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:20px clamp(32px,6vw,96px);padding:clamp(30px,3.6vw,46px) 0;border-bottom:1px solid var(--line)}
+.svc-row h3{font-size:clamp(1.55rem,2.4vw,2.05rem);letter-spacing:-.03em;line-height:1.1}
+.svc-row>div>p{font-size:1.08rem;color:var(--ink-2);max-width:40rem}
+.svc dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:26px 0 0}
+.svc dt{font-weight:700;font-size:.92rem;color:var(--moss);margin-bottom:6px}
+.svc dd{margin:0;font-size:.96rem;color:var(--ink-2);line-height:1.55}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,56px);counter-reset:s}
+.step{position:relative;padding-top:34px}
+.step:before{content:"";position:absolute;left:0;right:calc(-1 * clamp(24px,4vw,56px));top:0;height:2px;background:var(--line)}
+.step:last-child:before{right:0;background:linear-gradient(90deg,var(--line),var(--line))}
+.step:after{content:"";position:absolute;left:0;top:-5px;width:12px;height:12px;border-radius:50%;background:var(--saffron);box-shadow:0 0 0 5px var(--paper)}
+.stepno{font-family:var(--display);font-weight:600;font-size:clamp(4rem,7vw,6rem);line-height:.9;letter-spacing:-.06em;color:var(--mist-2);display:block;margin-bottom:22px}
+.step h3{font-size:1.55rem;margin-bottom:10px;letter-spacing:-.025em}
+.step p{color:var(--ink-2);max-width:21rem}
+.step-note{margin-top:clamp(36px,4vw,56px);background:var(--mist);border-radius:var(--r-md);padding:18px 22px;color:var(--ink-2);display:flex;gap:14px;align-items:flex-start}
+.step-note .i{color:var(--moss);margin-top:.28em;width:1.15em;height:1.15em}
+.step-note b{color:var(--ink)}
+
+/* finder */
+.finder{background:var(--spruce-900);color:#fff;border-radius:var(--r-xl);padding:clamp(28px,5vw,64px);position:relative;overflow:hidden;isolation:isolate}
+.finder-rings{position:absolute;z-index:-1;left:-260px;bottom:-420px;width:760px;opacity:.9}
+.finder h2{max-width:36rem;font-size:clamp(1.9rem,3.6vw,3rem);color:#fff}
+.finder-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(32px,5vw,72px);margin-top:clamp(32px,4vw,52px);align-items:start}
+.q{margin-bottom:28px}
+.q label{display:block;font-weight:600;margin-bottom:12px;color:rgba(255,255,255,.92)}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1.5px solid rgba(255,255,255,.26);background:transparent;color:#fff;border-radius:999px;padding:11px 18px;font:600 .95rem var(--text);cursor:pointer;transition:background-color .2s,border-color .2s,color .2s}
+.opt:hover{border-color:rgba(255,255,255,.7)}
+.opt[aria-pressed="true"]{background:var(--saffron);border-color:var(--saffron);color:var(--ink)}
+.finder-result{background:var(--paper);color:var(--ink);border-radius:var(--r-lg);padding:clamp(24px,3vw,34px);min-height:340px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.finder-result .lbl{font-size:.9rem;font-weight:600;color:var(--moss)}
+.tier-name{font-family:var(--display);font-size:2.3rem;font-weight:600;letter-spacing:-.035em;margin-top:6px;line-height:1.05}
+.finder-result .price{font-family:var(--display);font-size:2.6rem;font-weight:600;letter-spacing:-.04em;margin:8px 0 12px;line-height:1}
+.finder-result .price small{font-family:var(--text);font-size:1rem;letter-spacing:0;font-weight:500;color:var(--ink-2)}
+.finder-result p{color:var(--ink-2);font-size:.98rem}
+.finder-result ul{margin:16px 0 22px;display:grid;gap:8px;font-size:.96rem}
+.finder-result li{display:flex;gap:10px;align-items:flex-start;color:var(--ink)}
+.finder-result li:before{content:"";flex:0 0 auto;width:16px;height:16px;margin-top:.3em;border-radius:50%;background:var(--moss-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.3l2.2 2.2 4.8-5' fill='none' stroke='%232c6b56' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.finder-result .fine{font-size:.86rem;margin-top:14px;color:var(--ink-3)}
+.finder-result .btn{width:100%}
+
+/* pricing */
+.toggle{display:inline-flex;background:var(--mist);border-radius:999px;padding:5px;gap:4px;border:1px solid var(--line)}
+.toggle button{border:0;background:transparent;padding:11px 22px;border-radius:999px;font:600 .95rem var(--text);color:var(--ink-2);cursor:pointer;transition:background-color .2s,color .2s}
+.toggle button[aria-pressed="true"]{background:var(--spruce-900);color:#fff}
+.price-head h2{max-width:15ch}
+.price-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(40px,5vw,60px)}
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
+.tier{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(26px,3vw,38px);display:flex;flex-direction:column}
+.tier h3{font-size:1.7rem;letter-spacing:-.03em}
+.tier .for{color:var(--ink-2);font-size:.97rem;margin:8px 0 26px;min-height:3.1em}
+.price-line{display:flex;align-items:baseline;gap:8px}
+.amount{font-family:var(--display);font-size:clamp(3.2rem,4.4vw,4.1rem);font-weight:600;letter-spacing:-.055em;line-height:1;font-variant-numeric:tabular-nums}
+.per{font-weight:500;color:var(--ink-2);font-size:.97rem}
+.bill-note{font-size:.88rem;color:var(--ink-3);margin-top:8px;min-height:1.4em}
+.tier dl{margin:26px 0;border-top:1px solid var(--line)}
+.tier dl div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:.98rem}
+.tier dt{color:var(--ink-2)}
+.tier dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums}
+.tier .inc{color:var(--ink-2);font-size:.95rem;flex:1}
+.tier .btn{width:100%;margin-top:26px}
+.tier.featured{background:var(--spruce-900);color:#fff;border-color:var(--spruce-900);box-shadow:0 40px 70px -32px rgba(14,43,38,.7);transform:translateY(-14px);padding-bottom:calc(clamp(26px,3vw,38px) + 14px)}
+.tier.featured .for,.tier.featured .per,.tier.featured .inc,.tier.featured dt{color:rgba(255,255,255,.72)}
+.tier.featured .bill-note{color:rgba(255,255,255,.55)}
+.tier.featured dl,.tier.featured dl div{border-color:var(--line-dark)}
+.pricing-notes{margin-top:34px;display:flex;gap:10px 36px;flex-wrap:wrap;color:var(--ink-2);font-size:.94rem}
+.pricing-notes p{display:flex;gap:10px;align-items:flex-start;max-width:34rem}
+.pricing-notes .i{color:var(--moss);margin-top:.3em}
+.pricing-notes b{color:var(--ink)}
+
+/* sample audit */
+.audit-layout{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:start}
+.audit-tabs{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.audit-tab{text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:22px 22px 22px 26px;cursor:pointer;position:relative;font:inherit;color:var(--ink);transition:background-color .25s}
+.audit-tab:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--saffron);transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease)}
+.audit-tab b{font-family:var(--display);font-weight:600;font-size:1.3rem;letter-spacing:-.02em;display:block;margin-bottom:3px}
+.audit-tab span{font-size:.95rem;color:var(--ink-2);display:block;line-height:1.5}
+.audit-tab:hover{background:var(--mist)}
+.audit-tab[aria-selected="true"]{background:var(--mist)}
+.audit-tab[aria-selected="true"]:before{transform:scaleY(1)}
+.audit-panel{background:var(--mist);border-radius:var(--r-lg);padding:clamp(26px,3.4vw,46px);min-height:400px}
+.audit-panel h3{font-size:1.9rem;margin-bottom:12px;letter-spacing:-.03em}
+.audit-panel>p{color:var(--ink-2);max-width:34rem}
+.audit-panel ul{margin:24px 0 0;display:grid;gap:12px}
+.audit-panel li{display:flex;gap:12px;align-items:flex-start;color:var(--ink);line-height:1.5}
+.audit-panel li .i{color:var(--moss);margin-top:.25em;width:1.1em;height:1.1em;stroke-width:2.6}
+.callout{margin-top:28px;background:var(--paper);border-left:4px solid var(--saffron);padding:16px 20px;border-radius:0 var(--r-md) var(--r-md) 0;font-size:.97rem;color:var(--ink-2)}
+.audit-foot{margin-top:24px;color:var(--ink-2);max-width:36rem}
+.audit-foot b{color:var(--ink)}
+.audit-foot+.btn{margin-top:22px}
+@media (prefers-reduced-motion:no-preference){.audit-panel:not([hidden]){animation:fadein .45s var(--ease)}}
+
+/* faq */
+.faq-layout{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,6vw,96px);align-items:start}
+.faq-side{position:sticky;top:112px}
+.faq-side p{color:var(--ink-2);margin-top:18px;max-width:22rem}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-list{border-top:1px solid var(--ink)}
+.faq-item h3{font-size:inherit;letter-spacing:0;line-height:inherit}
+.faq-q{width:100%;background:none;border:0;text-align:left;padding:26px 0;display:flex;justify-content:space-between;gap:24px;align-items:center;cursor:pointer;font-family:var(--display);font-size:clamp(1.2rem,1.9vw,1.5rem);font-weight:600;letter-spacing:-.02em;line-height:1.22;color:var(--ink)}
+.faq-icon{flex:0 0 40px;height:40px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;transition:background-color .25s,border-color .25s,transform .35s var(--ease),color .25s}
+.faq-icon .i{width:18px;height:18px}
+.faq-q:hover .faq-icon{border-color:var(--ink)}
+.faq-item.open .faq-icon{background:var(--spruce-900);border-color:var(--spruce-900);color:#fff;transform:rotate(45deg)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--ease)}
+.faq-a>div{overflow:hidden;visibility:hidden;transition:visibility 0s .4s}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-item.open .faq-a>div{visibility:visible;transition-delay:0s}
+.faq-a p{padding:0 56px 28px 0;color:var(--ink-2);max-width:42rem}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(36px,6vw,96px);align-items:start}
+.founder{background:var(--spruce-900);color:#fff;border-radius:var(--r-xl);padding:clamp(28px,3.6vw,48px)}
+.monogram{width:64px;height:64px;border-radius:50%;background:var(--saffron);color:var(--ink);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.04em;margin-bottom:28px}
+.founder-name{font-family:var(--display);font-size:clamp(2rem,3vw,2.6rem);font-weight:600;letter-spacing:-.035em;line-height:1.05}
+.founder-role{color:rgba(255,255,255,.66);margin:8px 0 22px;font-weight:500}
+.founder p{color:rgba(255,255,255,.78)}
+.founder p+p{margin-top:12px}
+.founder a{color:var(--saffron);font-weight:700;text-underline-offset:4px;display:inline-block;margin-top:6px;overflow-wrap:anywhere}
+.approach h3{font-size:1.5rem;margin-bottom:22px}
+.approach ul{border-top:1px solid var(--ink)}
+.approach li{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 28px;color:var(--ink-2)}
+.approach li b{font-family:var(--display);font-weight:600;font-size:1.22rem;letter-spacing:-.02em;color:var(--ink);line-height:1.2}
+.approach-foot{margin-top:22px;color:var(--ink-2);font-size:.97rem}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(36px,6vw,96px);align-items:start}
+.contact-info{position:sticky;top:110px}
+.contact-info h2{margin-bottom:20px}
+.contact-info p{color:var(--ink-2);margin-bottom:14px;max-width:30rem}
+.mail-card{background:var(--spruce-900);color:#fff;border-radius:var(--r-lg);padding:26px;margin-top:30px}
+.mail-card .lbl{font-size:.9rem;font-weight:600;color:rgba(255,255,255,.66)}
+.mail-card a{display:inline-block;color:var(--saffron);font-family:var(--display);font-weight:600;font-size:clamp(1.4rem,2.4vw,1.8rem);letter-spacing:-.025em;word-break:break-all;text-decoration:none;margin-top:6px}
+.mail-card a:hover{text-decoration:underline;text-underline-offset:5px}
+.mail-card p{font-size:.9rem;color:rgba(255,255,255,.64);margin:10px 0 0}
+form{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-xl);padding:clamp(24px,3.4vw,44px);box-shadow:0 40px 70px -48px rgba(14,43,38,.45)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.field{margin-bottom:20px}
+.field label{display:block;font-weight:600;margin-bottom:8px;font-size:.95rem}
+.field input,.field select,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:var(--r-sm);padding:14px 16px;font:inherit;font-size:1rem;background:var(--white);color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 8l5 5 5-5' fill='none' stroke='%2344524d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:18px;padding-right:44px}
+.field input::placeholder,.field textarea::placeholder{color:#8a9691}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:#a9b7af}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--spruce-900);box-shadow:0 0 0 4px rgba(242,179,61,.45)}
+.field .err{display:none;color:var(--red);font-size:.88rem;font-weight:600;margin-top:6px}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:var(--red)}
+.field.invalid .err{display:block}
+textarea{min-height:128px;resize:vertical}
+.consent{display:flex;gap:14px;align-items:flex-start;border:1.5px solid var(--line);border-radius:var(--r-sm);padding:16px;background:var(--mist)}
+.consent input{width:22px;height:22px;accent-color:var(--spruce-900);margin-top:1px;flex:0 0 auto}
+.consent label{font-weight:500;font-size:.95rem;margin:0}
+.honeypot{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+.form-status{display:none;border-radius:var(--r-md);padding:16px 18px;margin-bottom:22px;font-weight:600;font-size:.96rem}
+.form-status.show{display:block}
+.form-status.ok{background:#e4f1e6;border:1.5px solid var(--moss);color:#164a37}
+.form-status.bad{background:#fdecea;border:1.5px solid var(--red);color:#7a1a14}
+.form-fine{font-size:.88rem;color:var(--ink-3);margin-top:14px;text-align:center}
+.summary-box{display:none;background:var(--mist);border-radius:var(--r-md);padding:18px 20px;margin-top:22px;white-space:pre-wrap;font-size:.92rem;line-height:1.6;color:var(--ink-2)}
+.summary-box.show{display:block}
+.summary-actions{display:none;gap:10px;flex-wrap:wrap;margin-top:14px}
+.summary-actions.show{display:flex}
+
+/* legal */
+.legal-wrap{border-top:1px solid var(--line);padding-top:clamp(48px,6vw,80px)}
+.legal{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);margin-top:36px}
+.legal h3{margin-bottom:14px;font-size:1.4rem}
+.legal p,.legal li{color:var(--ink-2);font-size:.97rem}
+.legal ul{margin-top:12px;display:grid;gap:10px}
+.legal li{padding-left:18px;position:relative}
+.legal li:before{content:"";position:absolute;left:0;top:.7em;width:6px;height:6px;border-radius:50%;background:var(--saffron)}
+.legal li b{color:var(--ink)}
+.legal-title{font-size:clamp(1.7rem,3vw,2.4rem)}
+
+/* cta + footer */
+.cta-band{background:var(--spruce-900);color:#fff;text-align:center;padding:clamp(80px,10vw,136px) 0;position:relative;overflow:hidden;isolation:isolate}
+.cta-rings{position:absolute;z-index:-1;left:50%;top:50%;width:1300px;max-width:none;transform:translate(-50%,-50%)}
+.cta-band h2{font-size:clamp(2.3rem,5.4vw,4.4rem);letter-spacing:-.045em;max-width:16ch;margin:0 auto;text-wrap:balance}
+.cta-band p{color:rgba(255,255,255,.72);margin:22px auto 36px;font-size:1.15rem;max-width:30rem}
+footer{background:var(--spruce-950);color:rgba(255,255,255,.7);padding:clamp(56px,7vw,88px) 0 30px}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:40px}
+footer .wordmark{color:#fff}
+footer a{color:rgba(255,255,255,.85);text-decoration:none}
+footer a:hover{color:var(--saffron);text-decoration:underline;text-underline-offset:4px}
+footer h4{color:#fff;margin:0 0 16px;font-size:1rem;font-weight:600;letter-spacing:-.01em}
+footer ul{display:grid;gap:10px;font-size:.96rem}
+.foot-about{margin-top:18px;max-width:27rem;font-size:.97rem}
+.foot-note{border-top:1px solid var(--line-dark);margin-top:clamp(40px,5vw,64px);padding-top:22px;display:flex;justify-content:space-between;gap:10px 24px;flex-wrap:wrap;font-size:.88rem;color:rgba(255,255,255,.55)}
+
+/* ============ Responsive ============ */
+@media (max-width:1020px){
+  nav.main,.nav-cta .btn{display:none}
+  #menuBtn{display:block}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-rings{right:-40%;top:-10%;width:900px}
+  .section-head,.svc-row,.audit-layout,.faq-layout,.about-grid,.contact-grid,.finder-grid,.legal{grid-template-columns:1fr}
+  .section-head{align-items:start}
+  .faq-side,.contact-info{position:static}
+  .tiers{grid-template-columns:1fr;max-width:560px}
+  .tier.featured{transform:none;padding-bottom:clamp(26px,3vw,38px)}
+  .tier .for{min-height:0}
+  .steps{grid-template-columns:1fr;gap:44px}
+  .step:before,.step:last-child:before{right:0}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-grid>div:first-child{grid-column:1/-1}
+}
+@media (max-width:640px){
+  body{font-size:1rem}
+  .nav{height:68px}
+  .svc dl{grid-template-columns:1fr;gap:18px}
+  .form-row{grid-template-columns:1fr}
+  .sectors li{flex:1 1 50%;border-left:0;border-top:1px solid var(--line-dark);padding:16px 10px}
+  .sectors li:nth-child(-n+2){border-top:0}
+  .sectors li:nth-child(even){border-left:1px solid var(--line-dark)}
+  .hero-ctas .btn{width:100%}
+  .approach li{grid-template-columns:1fr}
+  .faq-a p{padding-right:0}
+  .mock-body{min-height:0}
+  .mail-card a{font-size:1.3rem}
+  .summary-actions .btn{width:100%}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition-duration:.01ms!important}}
+</style>
+<noscript><style>.faq-a{grid-template-rows:1fr}.faq-a>div{visibility:visible}.mobileMenu{display:block}nav.main{display:none}.mock-body[hidden],.audit-panel[hidden]{display:block!important}.audit-panel{margin-bottom:16px}</style></noscript>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="xg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46BC96"/><stop offset=".55" stop-color="#2A8368"/><stop offset="1" stop-color="#175443"/></linearGradient></defs>
+  <symbol id="logo-icon" viewBox="0 0 256 256"><rect width="256" height="256" rx="64" fill="url(#xg)"/><g stroke="#fff" stroke-width="15" stroke-linecap="round"><line x1="128" y1="128" x2="76" y2="76"/><line x1="128" y1="128" x2="180" y2="76"/><line x1="128" y1="128" x2="76" y2="180"/><line x1="128" y1="128" x2="180" y2="180"/></g><g fill="#fff"><circle cx="76" cy="76" r="17"/><circle cx="180" cy="76" r="17"/><circle cx="76" cy="180" r="17"/><circle cx="180" cy="180" r="17"/></g><circle cx="128" cy="128" r="24.5" fill="#F2B33D"/></symbol>
+  <defs><path id="logo-wordpath" d="M1.1 0.0 25.5 -37.300000000000004 1.1 -74.5H18.900000000000002L34.1 -51.300000000000004L49.300000000000004 -74.5H67.10000000000001L42.800000000000004 -37.300000000000004L67.10000000000001 0.0H49.300000000000004L34.2 -23.200000000000003L18.900000000000002 0.0Z M80.2 22.0Q77.80000000000001 22.0 75.55000000000001 21.6Q73.3 21.200000000000003 71.60000000000001 20.3V8.0Q73.0 8.4 74.9 8.7Q76.80000000000001 9.0 78.4 9.0Q82.80000000000001 9.0 84.70000000000002 6.95Q86.60000000000001 4.9 87.80000000000001 2.3000000000000003L88.80000000000001 0.0L67.3 -54.6H83.4L96.30000000000001 -19.5L109.2 -54.6H125.30000000000001L101.9 5.1000000000000005Q99.7 10.700000000000001 96.5 14.5Q93.30000000000001 18.3 89.25 20.15Q85.2 22.0 80.2 22.0Z M129.9 0.0V-75.7H144.9V0.0Z M171.0 0.0 149.5 -54.6H165.70000000000002L177.5 -21.900000000000002L189.3 -54.6H205.5L184.0 0.0Z M227.00000000000003 1.2000000000000002Q221.10000000000002 1.2000000000000002 216.8 -0.7Q212.50000000000003 -2.6 210.20000000000005 -6.15Q207.90000000000003 -9.700000000000001 207.90000000000003 -14.600000000000001Q207.90000000000003 -19.200000000000003 210.00000000000003 -22.75Q212.10000000000002 -26.3 216.45000000000002 -28.700000000000003Q220.8 -31.1 227.3 -32.1L242.40000000000003 -34.5V-36.0Q242.40000000000003 -39.1 239.95000000000005 -41.2Q237.50000000000003 -43.300000000000004 233.3 -43.300000000000004Q229.3 -43.300000000000004 226.25 -41.10000000000001Q223.20000000000002 -38.900000000000006 221.8 -35.300000000000004L209.8 -41.0Q211.40000000000003 -45.6 214.90000000000003 -48.900000000000006Q218.40000000000003 -52.2 223.3 -54.0Q228.20000000000002 -55.800000000000004 234.00000000000003 -55.800000000000004Q240.90000000000003 -55.800000000000004 246.20000000000005 -53.300000000000004Q251.50000000000003 -50.800000000000004 254.45000000000005 -46.35000000000001Q257.40000000000003 -41.900000000000006 257.40000000000003 -36.0V0.0H243.40000000000003V-5.2Q242.50000000000003 -4.2 241.50000000000003 -3.5Q238.60000000000002 -1.1 235.00000000000003 0.050000000000000044Q231.40000000000003 1.2000000000000002 227.00000000000003 1.2000000000000002ZM242.40000000000003 -23.5 230.00000000000003 -21.3Q226.8 -20.700000000000003 225.10000000000002 -19.25Q223.40000000000003 -17.8 223.40000000000003 -15.100000000000001Q223.40000000000003 -12.600000000000001 225.3 -11.200000000000001Q227.20000000000002 -9.8 230.00000000000003 -9.8Q233.70000000000002 -9.8 236.5 -11.4Q239.3 -13.0 240.85000000000002 -15.75Q242.40000000000003 -18.5 242.40000000000003 -21.8Z M266.40000000000003 0.0V-54.6H280.40000000000003V-46.5Q282.20000000000005 -50.900000000000006 285.40000000000003 -52.800000000000004Q289.50000000000006 -55.2 295.20000000000005 -55.2H298.40000000000003V-42.2H293.70000000000005Q288.20000000000005 -42.2 284.80000000000007 -38.85Q281.40000000000003 -35.5 281.40000000000003 -29.400000000000002V0.0Z"/></defs>
+</svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.1"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></symbol>
+</svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="rings" viewBox="0 0 1000 1000">
+      <g fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="1.5">
+        <circle cx="500" cy="500" r="120"/><circle cx="500" cy="500" r="210"/><circle cx="500" cy="500" r="300"/>
+        <circle cx="500" cy="500" r="390"/><circle cx="500" cy="500" r="480"/>
+      </g>
+      <circle cx="500" cy="500" r="300" fill="none" stroke="#f2b33d" stroke-opacity=".45" stroke-width="1.5" stroke-dasharray="2 14" stroke-linecap="round"/>
+      <circle cx="500" cy="200" r="6" fill="#f2b33d"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="notice">Preview build for <b>xylvar.top</b>. The domain and the email address below are being set up and are not live yet.</div>
+
+<header class="site on-dark">
+  <div class="wrap nav">
+    <a class="wordmark" href="#top" aria-label="xylvar home"><svg class="logo-icon" aria-hidden="true" focusable="false"><use href="#logo-icon"/></svg><svg class="logo-word" viewBox="0 -74.5 299.5 74.5" aria-hidden="true" focusable="false" overflow="visible"><use href="#logo-wordpath" fill="currentColor"/></svg><span class="sr-only">Xylvar</span></a>
+    <nav class="main" aria-label="Main navigation">
+      <a href="#services">Services</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#sample-audit">Sample audit</a>
+      <a href="#faq">FAQ</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-saffron btn-sm" href="#contact">Request an audit</a>
+      <button id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">Menu</button>
+    </div>
+  </div>
+  <div class="mobileMenu" id="mobileMenu">
+    <a href="#services">Services</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#sample-audit">Sample audit</a>
+    <a href="#faq">FAQ</a>
+    <a href="#about">About</a>
+    <a href="#contact">Request an audit</a>
+  </div>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero on-dark" id="top">
+  <svg class="hero-rings" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false"><use href="#rings"/></svg>
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Get found when customers search, and when AI answers.</h1>
+      <p class="lede">xylvar (pronounced ZIL-var) helps businesses that need SEO, anywhere in the world, including Australia and Nigeria. We start with an audit, then do the monthly work, and report it to you by email.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-saffron" href="#contact" data-interest="SEO audit">Request an audit <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-line-light" href="#services">See services</a>
+      </div>
+      <p class="hero-note"><b>How it works, in one line:</b> audit first, agree a plan and a tier, then monthly fixes and a monthly report by email.</p>
+    </div>
+
+    <div class="mock" aria-label="Illustration of search and AI results">
+      <div class="mock-inner">
+        <div class="mock-tabs" role="tablist" aria-label="Result view">
+          <button class="mock-tab" role="tab" id="tabSearch" aria-selected="true" aria-controls="panelSearch">Search results</button>
+          <button class="mock-tab" role="tab" id="tabAi" aria-selected="false" aria-controls="panelAi" tabindex="-1">AI answers</button>
+        </div>
+        <div class="mock-search"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg><span><span id="mockQ">“dentist open on Saturday near me”</span><i class="caret" aria-hidden="true"></i></span></div>
+        <div class="mock-body" id="panelSearch" role="tabpanel" aria-labelledby="tabSearch">
+          <div class="res res--you">
+            <div class="res-pin"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg></div>
+            <div>
+              <div class="res-title">Your business <span class="pill">Listed clearly</span></div>
+              <div class="res-url">yourbusiness.example · Map listing, hours and services match your site</div>
+              <p class="res-desc">The details a customer needs, in one place, with nothing contradicting it elsewhere.</p>
+              <ul class="res-checks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Opening hours</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Services</li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Business details</li></ul>
+            </div>
+          </div>
+          <div class="res res--ghost" aria-hidden="true"><div class="res-pin"></div><div class="ghost-bars"><div class="bar short"></div><div class="bar mid"></div></div></div>
+          <div class="res res--ghost" aria-hidden="true"><div class="res-pin"></div><div class="ghost-bars"><div class="bar short"></div><div class="bar mid"></div></div></div>
+          <p class="mock-note">An audit checks whether your pages, your map listing and your business details tell the same story.</p>
+        </div>
+        <div class="mock-body" id="panelAi" role="tabpanel" aria-labelledby="tabAi" hidden>
+          <div class="ai-answer">
+            <div class="ai-head"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg>AI answer</div>
+            <p>AI answers summarise several businesses at once. They draw on websites, map listings and reviews, and they change from day to day. xylvar checks what <b>Google AI Overviews, Gemini and Bing AI</b> say when customers ask questions in your sector, and records the answer on the day it was checked.</p>
+          </div>
+          <div class="sources" aria-label="Sources AI answers draw on"><span>Your website</span><span>Map listing</span><span>Reviews</span><span>Business details</span></div>
+          <p class="mock-note" style="margin-top:16px">No one can guarantee an AI mention. An audit shows where you stand, on a dated snapshot, so the work starts from facts.</p>
+        </div>
+        <p class="mock-foot">Illustration only. It is not a real search result and it names no real business.</p>
+      </div>
+    </div>
+  </div>
+  <div class="sectors">
+    <div class="wrap">
+      <ul aria-label="Who xylvar helps">
+        <li>Dental clinics</li><li>Law firms</li><li>Estate agents</li><li>Marketing agencies</li><li>Local services</li><li>Small e-commerce</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section section--paper" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>What you get, in plain language.</h2>
+      <p class="section-intro">Four services. Each one says what you receive, what we need from you, and what to expect.</p>
+    </div>
+    <div class="svc">
+      <article class="svc-row">
+        <h3>SEO audit</h3>
+        <div>
+          <p>A one off check of a website, rankings, map presence, page structure and AI visibility, delivered as a report.</p>
+          <dl>
+            <div><dt>You receive</dt><dd>A written report with findings in order of importance.</dd></div>
+            <div><dt>What you provide</dt><dd>Your website address and the services you want to be found for.</dd></div>
+            <div><dt>Please note</dt><dd>The audit itself does not guarantee rankings or AI mentions.</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="svc-row">
+        <h3>Monthly SEO retainer</h3>
+        <div>
+          <p>Ongoing SEO data and support, with a monthly report by email. Tier limits are shown in the pricing section, so you can see what changes between tiers.</p>
+          <dl>
+            <div><dt>You receive</dt><dd>Monthly fixes and a monthly report by email.</dd></div>
+            <div><dt>How often</dt><dd>Work each month, for the length of the agreed term.</dd></div>
+            <div><dt>What you provide</dt><dd>Access or information the owner asks for to make the fixes.</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="svc-row">
+        <h3>AI visibility tracking</h3>
+        <div>
+          <p>Checking what Google AI Overviews, Gemini and Bing AI say when customers ask questions about a business sector.</p>
+          <dl>
+            <div><dt>You receive</dt><dd>A dated snapshot of the answers found on the day of the check.</dd></div>
+            <div><dt>Please note</dt><dd>AI answers change day to day. Results are a snapshot, not a promise of future mentions.</dd></div>
+            <div><dt>What you provide</dt><dd>The questions your customers actually ask.</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="svc-row">
+        <h3>Local and map presence</h3>
+        <div>
+          <p>Checking and fixing business details, opening hours and categories where they differ between a website and a map listing.</p>
+          <dl>
+            <div><dt>You receive</dt><dd>A list of mismatches found, and the corrections made or recommended.</dd></div>
+            <div><dt>What you provide</dt><dd>Your correct hours, services and contact details.</dd></div>
+            <div><dt>Please note</dt><dd>This service is confirmed with the owner before work starts, where a listing needs access you control.</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section--paper section--flush-top" id="how-it-works">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Three steps, from first message to monthly report.</h2>
+    </div>
+    <div class="steps">
+      <article class="step"><span class="stepno" aria-hidden="true">1</span><h3><span class="sr-only">Step 1: </span>Request an audit</h3><p>Use the contact form. Tell us your business name, website and what you want to be found for.</p></article>
+      <article class="step"><span class="stepno" aria-hidden="true">2</span><h3><span class="sr-only">Step 2: </span>Agree a plan and a tier</h3><p>The owner reviews your site and sends the audit and a proposal with a tier. You choose whether to go ahead, and which tier fits.</p></article>
+      <article class="step"><span class="stepno" aria-hidden="true">3</span><h3><span class="sr-only">Step 3: </span>Monthly fixes and a report</h3><p>If you agree, work starts. Each month brings fixes and a report by email, showing what was done.</p></article>
+    </div>
+    <p class="step-note"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg><span><b>Then, each month:</b> a monthly check in by email or call, as agreed with you. Reports arrive by email.</span></p>
+  </div>
+</section>
+
+<!-- TIER FINDER -->
+<section class="section section--flush-top" style="padding-top:clamp(76px,9.5vw,132px)" aria-labelledby="finderTitle">
+  <div class="wrap">
+    <div class="finder on-dark">
+      <svg class="finder-rings" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false"><use href="#rings"/></svg>
+      <h2 id="finderTitle">Answer three questions. See the tier that fits your limits.</h2>
+      <div class="finder-grid">
+        <div>
+          <div class="q"><label id="qLoc">How many locations do you have?</label><div class="opts" role="group" aria-labelledby="qLoc" data-q="loc">
+            <button type="button" class="opt" data-val="0" aria-pressed="true">1</button>
+            <button type="button" class="opt" data-val="1" aria-pressed="false">2 to 3</button>
+            <button type="button" class="opt" data-val="2" aria-pressed="false">4 to 10</button>
+            <button type="button" class="opt" data-val="3" aria-pressed="false">More than 10</button>
+          </div></div>
+          <div class="q"><label id="qKey">How many keywords do you want tracked?</label><div class="opts" role="group" aria-labelledby="qKey" data-q="key">
+            <button type="button" class="opt" data-val="0" aria-pressed="true">Up to 50</button>
+            <button type="button" class="opt" data-val="1" aria-pressed="false">51 to 150</button>
+            <button type="button" class="opt" data-val="2" aria-pressed="false">151 to 400</button>
+            <button type="button" class="opt" data-val="3" aria-pressed="false">More than 400</button>
+          </div></div>
+          <div class="q" style="margin-bottom:0"><label id="qPage">How many pages a month should be worked on?</label><div class="opts" role="group" aria-labelledby="qPage" data-q="page">
+            <button type="button" class="opt" data-val="0" aria-pressed="true">2</button>
+            <button type="button" class="opt" data-val="1" aria-pressed="false">4</button>
+            <button type="button" class="opt" data-val="2" aria-pressed="false">8</button>
+            <button type="button" class="opt" data-val="3" aria-pressed="false">More than 8</button>
+          </div></div>
+        </div>
+        <div class="finder-result" aria-live="polite">
+          <p class="lbl">Recommended tier</p>
+          <div class="tier-name" id="recName">Starter</div>
+          <div class="price" id="recPrice">£349 <small>per month</small></div>
+          <p id="recText">Fits 1 location, up to 50 keywords and 2 pages a month, with 20 AI questions checked.</p>
+          <ul id="recList"><li>50 keywords</li><li>20 AI questions</li><li>1 location</li><li>2 pages per month</li></ul>
+          <button class="btn btn-dark" id="recCta" type="button">Request this tier</button>
+          <p class="fine">3 month starting term, then month to month. Prices exclude VAT.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section section--flush-top" id="pricing" style="padding-top:0">
+  <div class="wrap">
+    <div class="price-head">
+      <h2>See the cost without having to ask.</h2>
+      <div class="toggle" role="group" aria-label="Billing period">
+        <button type="button" id="billMonthly" aria-pressed="true">Monthly billing</button>
+        <button type="button" id="billQuarterly" aria-pressed="false">Quarterly billing</button>
+      </div>
+    </div>
+    <div class="tiers">
+      <article class="tier">
+        <h3>Starter</h3><p class="for">For one location getting its visibility in order.</p>
+        <div class="price-line"><span class="amount" data-monthly="£349" data-quarterly="£315">£349</span><span class="per">per month</span></div>
+        <p class="bill-note" data-note>Paid monthly.</p>
+        <dl>
+          <div><dt>Keywords</dt><dd>50</dd></div>
+          <div><dt>AI questions</dt><dd>20</dd></div>
+          <div><dt>Locations</dt><dd>1</dd></div>
+          <div><dt>Pages per month</dt><dd>2</dd></div>
+        </dl>
+        <p class="inc">Monthly SEO data and support, with a monthly report by email, within the limits above.</p>
+        <button class="btn btn-line tier-cta" type="button" data-tier="Pricing tier: Starter">Request this tier</button>
+      </article>
+      <article class="tier featured on-dark">
+        <h3>Growth</h3><p class="for">For a business covering more ground, in more places.</p>
+        <div class="price-line"><span class="amount" data-monthly="£649" data-quarterly="£585">£649</span><span class="per">per month</span></div>
+        <p class="bill-note" data-note>Paid monthly.</p>
+        <dl>
+          <div><dt>Keywords</dt><dd>150</dd></div>
+          <div><dt>AI questions</dt><dd>50</dd></div>
+          <div><dt>Locations</dt><dd>3</dd></div>
+          <div><dt>Pages per month</dt><dd>4</dd></div>
+        </dl>
+        <p class="inc">Monthly SEO data and support, with a monthly report by email, within the limits above.</p>
+        <button class="btn btn-saffron tier-cta" type="button" data-tier="Pricing tier: Growth">Request this tier</button>
+      </article>
+      <article class="tier">
+        <h3>Scale</h3><p class="for">For larger coverage across many locations and pages.</p>
+        <div class="price-line"><span class="amount" data-monthly="£1,190" data-quarterly="£1,070">£1,190</span><span class="per">per month</span></div>
+        <p class="bill-note" data-note>Paid monthly.</p>
+        <dl>
+          <div><dt>Keywords</dt><dd>400</dd></div>
+          <div><dt>AI questions</dt><dd>150</dd></div>
+          <div><dt>Locations</dt><dd>10</dd></div>
+          <div><dt>Pages per month</dt><dd>8</dd></div>
+        </dl>
+        <p class="inc">Monthly SEO data and support, with a monthly report by email, within the limits above.</p>
+        <button class="btn btn-line tier-cta" type="button" data-tier="Pricing tier: Scale">Request this tier</button>
+      </article>
+    </div>
+    <div class="pricing-notes">
+      <p><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span><b>Term:</b> 3 month starting term, then month to month. <b>Prices exclude VAT.</b></span></p>
+      <p><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span>Quarterly prices are shown per month, on quarterly billing. No discount or limited time offer is claimed.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE AUDIT -->
+<section class="section section--paper" id="sample-audit">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>See the quality of the work before you pay for it.</h2>
+      <p class="section-intro">A sample audit is available on request. It is clearly labelled as a sample, and the sample business is never presented as a client. Nothing is published without the owner's approval and, where a real business is named, that business's permission.</p>
+    </div>
+    <div class="audit-layout">
+      <div class="audit-tabs" role="tablist" aria-label="What an audit covers" aria-orientation="vertical">
+        <button class="audit-tab" role="tab" aria-selected="true" aria-controls="ap1" id="at1" data-panel="ap1"><b>Website structure</b><span>Headings, titles, pages and how the site is put together.</span></button>
+        <button class="audit-tab" role="tab" aria-selected="false" aria-controls="ap2" id="at2" data-panel="ap2" tabindex="-1"><b>Google rankings</b><span>Which pages show up, for which searches, and where they sit.</span></button>
+        <button class="audit-tab" role="tab" aria-selected="false" aria-controls="ap3" id="at3" data-panel="ap3" tabindex="-1"><b>Map results</b><span>Whether the map listing matches the website, and what is missing.</span></button>
+        <button class="audit-tab" role="tab" aria-selected="false" aria-controls="ap4" id="at4" data-panel="ap4" tabindex="-1"><b>AI answers</b><span>What AI tools say when customers ask questions in your sector.</span></button>
+      </div>
+      <div>
+        <div class="audit-panel" id="ap1" role="tabpanel" aria-labelledby="at1">
+          <h3>Website structure</h3>
+          <p>An audit reads the site the way a search engine reads it: page by page, checking the structure that decides what each page is about.</p>
+          <ul>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Page titles and descriptions, one clear subject per page</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Headings in a logical order, with one main heading per page</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Pages that compete with each other for the same search</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Missing or misleading page details, listed with the page they belong to</li>
+          </ul>
+          <div class="callout">Every finding names the page it applies to. Nothing is left as a general comment you cannot act on.</div>
+        </div>
+        <div class="audit-panel" id="ap2" role="tabpanel" aria-labelledby="at2" hidden>
+          <h3>Google rankings</h3>
+          <p>An audit records where the business shows up in ordinary Google results, for the searches its customers actually use, on the date of the check.</p>
+          <ul>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Which pages rank, and for which searches</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Where the wrong page ranks for an important search</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Searches where competitors rank and the business does not</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Results labelled with the source and the date they were checked</li>
+          </ul>
+          <div class="callout">Rankings move. An audit is a dated snapshot, not a promise that a position will hold.</div>
+        </div>
+        <div class="audit-panel" id="ap3" role="tabpanel" aria-labelledby="at3" hidden>
+          <h3>Map results</h3>
+          <p>For local businesses, the map result is often the first thing a customer sees. An audit compares the map listing with the website, line by line.</p>
+          <ul>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Business name, address details, hours and categories</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Differences between the website and the map listing</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Review counts, named by source and date, where a source provides them</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Fixes in order of importance, starting with the ones customers see first</li>
+          </ul>
+          <div class="callout">Where a source gives no rating or count, the audit says so. It does not fill the gap from another source.</div>
+        </div>
+        <div class="audit-panel" id="ap4" role="tabpanel" aria-labelledby="at4" hidden>
+          <h3>AI answers</h3>
+          <p>An audit asks the same questions a customer would ask, in fresh sessions, and records what Google AI Overviews, Gemini and Bing AI answer on that day.</p>
+          <ul>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>The same set of questions asked of each AI tool, kept separate and dated</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Whether the business is named, and in what position, in each answer</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Which other businesses are named, where they are named</li>
+            <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Prices or claims quoted by an AI tool, labelled as AI answers, not as business facts</li>
+          </ul>
+          <div class="callout">AI answers change day to day. Results are a dated snapshot, and no AI mention is guaranteed.</div>
+        </div>
+        <p class="audit-foot"><b>What an audit does not do:</b> it does not guarantee number one rankings or AI mentions, and it does not present a sample business as a client.</p>
+        <a class="btn btn-dark" href="#contact" data-interest="SEO audit">Request a sample audit <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="wrap faq-layout">
+    <div class="faq-side">
+      <h2>Straight answers, before you ask.</h2>
+      <p>Something missing? <a class="moss-link" href="#contact">Send a question</a> and the owner will reply by email.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3><button class="faq-q" id="fq1" aria-expanded="false" aria-controls="fa1">Who is xylvar for?<span class="faq-icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></button></h3>
+        <div class="faq-a" id="fa1" role="region" aria-labelledby="fq1"><div><p>xylvar helps businesses that need SEO, anywhere in the world, including Australia and Nigeria, including dental clinics, law firms, estate agents, marketing agencies, local service businesses and small e-commerce brands. Owners and decision makers deal directly with the owner.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" id="fq2" aria-expanded="false" aria-controls="fa2">What do I get each month?<span class="faq-icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></button></h3>
+        <div class="faq-a" id="fa2" role="region" aria-labelledby="fq2"><div><p>Monthly SEO data and support, within the limits of your tier, and a monthly report by email showing what was done.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" id="fq3" aria-expanded="false" aria-controls="fa3">How long is the starting term?<span class="faq-icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></button></h3>
+        <div class="faq-a" id="fa3" role="region" aria-labelledby="fq3"><div><p>3 months, then month to month. Prices exclude VAT. The three tiers are Starter at £349 per month, Growth at £649 per month and Scale at £1,190 per month, with lower monthly figures on quarterly billing, shown in the pricing section.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" id="fq4" aria-expanded="false" aria-controls="fa4">Do you guarantee number one rankings or AI mentions?<span class="faq-icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></button></h3>
+        <div class="faq-a" id="fa4" role="region" aria-labelledby="fq4"><div><p>No. Nobody honestly can guarantee number one rankings or guaranteed AI mentions. xylvar promises the work and a report that shows what it did.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" id="fq5" aria-expanded="false" aria-controls="fa5">How do I receive reports?<span class="faq-icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></button></h3>
+        <div class="faq-a" id="fa5" role="region" aria-labelledby="fq5"><div><p>By email, once a month. Audits and reports are based on public information and dated snapshots, and AI results are labelled with the date they were checked.</p></div></div>
+      </div>
+      <div class="faq-item">
+        <h3><button class="faq-q" id="fq6" aria-expanded="false" aria-controls="fa6">How do I start?<span class="faq-icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></button></h3>
+        <div class="faq-a" id="fa6" role="region" aria-labelledby="fq6"><div><p>Request an audit through the contact form. The owner reviews your site and sends the audit and a proposal with a tier. If you agree, work starts.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section--paper" id="about">
+  <div class="wrap">
+    <div class="section-head"><h2>Who is behind xylvar.</h2></div>
+    <div class="about-grid">
+      <article class="founder on-dark">
+        <div class="monogram" aria-hidden="true">AT</div>
+        <div class="founder-name">Adebiyi Thompson</div>
+        <div class="founder-role">Founder, xylvar</div>
+        <p>xylvar helps businesses that need SEO, anywhere in the world, including Australia and Nigeria. It starts with an audit, agrees a plan and a tier, and then does the monthly work and reports it by email.</p>
+        <p>You deal directly with the owner. <a href="mailto:info@xylvar.top">info@xylvar.top</a></p>
+      </article>
+      <div class="approach">
+        <h3>The approach, in four lines</h3>
+        <ul>
+          <li><b>Check the facts first.</b><span>An audit reads public information and records it with a date.</span></li>
+          <li><b>Say what will be done.</b><span>A proposal names the tier and its limits before any work starts.</span></li>
+          <li><b>Do the work monthly.</b><span>Fixes each month, within the agreed tier.</span></li>
+          <li><b>Show the work.</b><span>A monthly report by email, so you can see what was done and what changed.</span></li>
+        </ul>
+        <p class="approach-foot">Contact is by email and by the form below. No phone number is published on this site.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <h2>Request an audit, or ask a question.</h2>
+      <p>Fill in the form. Every field marked required must be completed, and the website and email addresses must be valid. Your details stay in your message. They are not added to a list.</p>
+      <p>On this preview version of the site, sending opens your email app with the enquiry already written, addressed to xylvar. Check it, then send it from your own email.</p>
+      <div class="mail-card on-dark">
+        <p class="lbl" style="margin:0">Email</p>
+        <a href="mailto:info@xylvar.top">info@xylvar.top</a>
+        <p>This address is being set up. It will receive mail once xylvar.top is live and verified.</p>
+      </div>
+    </div>
+    <form id="enquiryForm" novalidate aria-label="Contact and audit request form">
+      <noscript><p style="background:var(--mist);border-radius:12px;padding:14px 16px;margin-bottom:16px">This form needs JavaScript to prepare your enquiry. You can email <a href="mailto:info@xylvar.top">info@xylvar.top</a> directly with your name, business name, website and message.</p></noscript>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+      <div class="honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="company_website2" tabindex="-1" autocomplete="off" /></label></div>
+      <div class="form-row">
+        <div class="field" id="fName"><label for="inName">Your name *</label><input id="inName" name="name" type="text" autocomplete="name" required /><p class="err">Please enter your name.</p></div>
+        <div class="field" id="fBiz"><label for="inBiz">Business name *</label><input id="inBiz" name="business" type="text" autocomplete="organization" required /><p class="err">Please enter your business name.</p></div>
+      </div>
+      <div class="field" id="fSite"><label for="inSite">Business website *</label><input id="inSite" name="website" type="url" inputmode="url" placeholder="https://yourbusiness.example" required /><p class="err">Please enter a valid website address, starting with https://</p></div>
+      <div class="form-row">
+        <div class="field" id="fEmail"><label for="inEmail">Work email *</label><input id="inEmail" name="email" type="email" autocomplete="email" required /><p class="err">Please enter a valid email address.</p></div>
+        <div class="field"><label for="inCountry">Country</label><input id="inCountry" name="country" type="text" autocomplete="country-name" placeholder="Your country" /></div>
+      </div>
+      <div class="field"><label for="inInterest">I am interested in</label><select id="inInterest" name="interest">
+        <option value="">Select an option</option>
+        <option>SEO audit</option><option>Monthly SEO retainer</option><option>AI visibility</option>
+        <option>Pricing tier: Starter</option><option>Pricing tier: Growth</option><option>Pricing tier: Scale</option><option>Other</option>
+      </select></div>
+      <div class="field" id="fMsg"><label for="inMsg">Message *</label><textarea id="inMsg" name="message" required placeholder="What do you want to be found for? Which services matter most?"></textarea><p class="err">Please write a short message so the reply can be useful.</p></div>
+      <div class="field consent" id="fConsent" style="margin-bottom:8px">
+        <input id="inConsent" type="checkbox" required />
+        <label for="inConsent">I agree to xylvar using these details to reply to my enquiry. *</label>
+      </div>
+      <p class="err" id="consentErr" style="display:none;color:var(--red);font-size:.88rem;font-weight:600;margin:0 0 14px">Please tick the consent box before sending.</p>
+      <button class="btn btn-dark" type="submit" style="width:100%;margin-top:14px">Prepare my enquiry <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+      <p class="form-fine">No payment is taken here.</p>
+      <div class="summary-box" id="summaryBox" aria-live="polite"></div>
+      <div class="summary-actions" id="summaryActions">
+        <a class="btn btn-dark btn-sm" id="mailtoBtn" href="#">Open email to send</a>
+        <button class="btn btn-line btn-sm" id="copyBtn" type="button">Copy enquiry text</button>
+        <button class="btn btn-line btn-sm" id="editBtn" type="button">Edit details</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- PRIVACY / TERMS -->
+<section class="section section--flush-top" id="legal" style="padding-top:0">
+  <div class="wrap">
+    <div class="legal-wrap">
+      <h2 class="legal-title">Privacy and terms, in plain language.</h2>
+      <div class="legal">
+        <article id="privacy">
+          <h3>Privacy notice</h3>
+          <p>What is collected: only the details you send through the contact form.</p>
+          <ul>
+            <li><b>Why:</b> to reply to your enquiry.</li>
+            <li><b>Storage:</b> form messages are delivered by email.</li>
+            <li><b>No sale</b> of personal data. No newsletter subscription unless you ask for one separately.</li>
+            <li>No analytics, advertising or social tracker is used on this site in this version.</li>
+          </ul>
+        </article>
+        <article id="terms">
+          <h3>Terms notice</h3>
+          <ul>
+            <li>Audits and reports are based on public information and dated snapshots.</li>
+            <li>AI answers change day to day, so AI results are not a promise of future mentions.</li>
+            <li>No ranking or AI mention is guaranteed.</li>
+            <li>Pricing is shown in the pricing section. Prices exclude VAT. The starting term is 3 months, then month to month.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-band on-dark">
+  <svg class="cta-rings" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false"><use href="#rings"/></svg>
+  <div class="wrap">
+    <h2>Start with the facts about your own site.</h2>
+    <p>Request an audit. See what customers and AI tools find today, then decide.</p>
+    <a class="btn btn-saffron" href="#contact" data-interest="SEO audit">Request an audit <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  </div>
+</section>
+</main>
+
+<footer class="on-dark">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="wordmark" href="#top" aria-label="xylvar home"><svg class="logo-icon" aria-hidden="true" focusable="false"><use href="#logo-icon"/></svg><svg class="logo-word" viewBox="0 -74.5 299.5 74.5" aria-hidden="true" focusable="false" overflow="visible"><use href="#logo-wordpath" fill="currentColor"/></svg><span class="sr-only">Xylvar</span></a>
+        <p class="foot-about">xylvar helps businesses that need SEO, anywhere in the world, including Australia and Nigeria. Audit first, then monthly work and a monthly report by email.</p>
+        <p style="margin-top:14px"><a href="mailto:info@xylvar.top" style="font-weight:600">info@xylvar.top</a></p>
+        <p style="font-size:.86rem;margin-top:8px;color:rgba(255,255,255,.55)">xylvar.top and info@xylvar.top are being set up and are not live yet.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-it-works">How it works</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#sample-audit">Sample audit</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Notices</h4>
+        <ul>
+          <li><a href="#privacy">Privacy notice</a></li>
+          <li><a href="#terms">Terms notice</a></li>
+          <li><a href="#contact">Request an audit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>&copy; 2026 xylvar. Pronounced ZIL-var.</span>
+      <span>Prices exclude VAT. 3 month starting term, then month to month.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var $ = function(id){ return document.getElementById(id); };
+
+  /* Mobile menu */
+  var menuBtn = $("menuBtn"), mobileMenu = $("mobileMenu");
+  function closeMenu(){ mobileMenu.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); menuBtn.textContent = "Menu"; }
+  menuBtn.addEventListener("click", function(){
+    var open = mobileMenu.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    menuBtn.textContent = open ? "Close" : "Menu";
+  });
+  mobileMenu.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", closeMenu); });
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape" && mobileMenu.classList.contains("open")) { closeMenu(); menuBtn.focus(); } });
+
+  /* Generic tab keyboard support (arrow keys) */
+  function enableArrowKeys(tabs, activate){
+    tabs.forEach(function(tab, i){
+      tab.addEventListener("keydown", function(e){
+        var next = null;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") next = tabs[(i + 1) % tabs.length];
+        if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (e.key === "Home") next = tabs[0];
+        if (e.key === "End") next = tabs[tabs.length - 1];
+        if (next) { e.preventDefault(); next.focus(); activate(next); }
+      });
+    });
+  }
+
+  /* Hero mock: tabs + typed query */
+  var tabSearch = $("tabSearch"), tabAi = $("tabAi"), panelSearch = $("panelSearch"), panelAi = $("panelAi"), mockQ = $("mockQ");
+  var searchQueries = ["“dentist open on Saturday near me”","“estate agent near me”","“family lawyer free consultation”","“roof repair company near me”"];
+  var aiQueries = ["“Who is the best dentist near me?”","“Which law firm handles family cases near me?”","“Recommend a reliable estate agent near me.”","“Who repairs roofs near me?”"];
+  var qi = 0, mode = "search", typing = 0, rotator = null, userTookOver = false;
+  function currentQuery(){ return (mode === "search" ? searchQueries : aiQueries)[qi]; }
+  function typeQuery(text){
+    var token = ++typing;
+    if (reduceMotion) { mockQ.textContent = text; return; }
+    mockQ.textContent = "";
+    var i = 0;
+    (function step(){
+      if (token !== typing) return;
+      mockQ.textContent = text.slice(0, ++i);
+      if (i < text.length) setTimeout(step, 24 + Math.random() * 28);
+    })();
+  }
+  function selectTab(which){
+    var isSearch = which === "search";
+    mode = which;
+    tabSearch.setAttribute("aria-selected", isSearch ? "true" : "false"); tabSearch.tabIndex = isSearch ? 0 : -1;
+    tabAi.setAttribute("aria-selected", isSearch ? "false" : "true"); tabAi.tabIndex = isSearch ? -1 : 0;
+    panelSearch.hidden = !isSearch; panelAi.hidden = isSearch;
+    typeQuery(currentQuery());
+  }
+  tabSearch.addEventListener("click", function(){ userTookOver = true; selectTab("search"); });
+  tabAi.addEventListener("click", function(){ userTookOver = true; selectTab("ai"); });
+  enableArrowKeys([tabSearch, tabAi], function(t){ userTookOver = true; selectTab(t === tabSearch ? "search" : "ai"); });
+  if (!reduceMotion) {
+    typeQuery(currentQuery());
+    rotator = setInterval(function(){
+      if (userTookOver || document.hidden) return;
+      qi = (qi + 1) % searchQueries.length;
+      typeQuery(currentQuery());
+    }, 5200);
+  }
+
+  /* Audit tabs */
+  var auditTabs = Array.prototype.slice.call(document.querySelectorAll(".audit-tab"));
+  function selectAudit(tab){
+    auditTabs.forEach(function(t){ t.setAttribute("aria-selected", t === tab ? "true" : "false"); t.tabIndex = t === tab ? 0 : -1; });
+    document.querySelectorAll(".audit-panel").forEach(function(p){ p.hidden = true; });
+    $(tab.getAttribute("data-panel")).hidden = false;
+  }
+  auditTabs.forEach(function(tab){ tab.addEventListener("click", function(){ selectAudit(tab); }); });
+  enableArrowKeys(auditTabs, selectAudit);
+
+  /* FAQ accordion */
+  var faqItems = document.querySelectorAll(".faq-item");
+  faqItems.forEach(function(item){
+    var q = item.querySelector(".faq-q");
+    q.addEventListener("click", function(){
+      var willOpen = !item.classList.contains("open");
+      faqItems.forEach(function(other){
+        other.classList.remove("open");
+        other.querySelector(".faq-q").setAttribute("aria-expanded","false");
+      });
+      if (willOpen) { item.classList.add("open"); q.setAttribute("aria-expanded","true"); }
+    });
+  });
+
+  /* Pricing toggle */
+  var billMonthly = $("billMonthly"), billQuarterly = $("billQuarterly");
+  function setBilling(quarterly){
+    billMonthly.setAttribute("aria-pressed", quarterly ? "false" : "true");
+    billQuarterly.setAttribute("aria-pressed", quarterly ? "true" : "false");
+    document.querySelectorAll(".tier .amount").forEach(function(el){
+      el.textContent = quarterly ? el.getAttribute("data-quarterly") : el.getAttribute("data-monthly");
+      if (!reduceMotion && el.animate) { el.animate([{opacity:0, transform:"translateY(8px)"},{opacity:1, transform:"none"}], {duration:320, easing:"cubic-bezier(.22,.8,.24,1)"}); }
+    });
+    document.querySelectorAll(".tier [data-note]").forEach(function(el){
+      el.textContent = quarterly ? "Per month, billed quarterly." : "Paid monthly.";
+    });
+    isQuarterly = quarterly;
+    renderFinder();
+  }
+  billMonthly.addEventListener("click", function(){ setBilling(false); });
+  billQuarterly.addEventListener("click", function(){ setBilling(true); });
+
+  /* Tier finder */
+  var TIERS = [
+    {name:"Starter", monthly:"£349", quarterly:"£315", text:"Fits 1 location, up to 50 keywords and 2 pages a month, with 20 AI questions checked.", list:["50 keywords","20 AI questions","1 location","2 pages per month"], interest:"Pricing tier: Starter"},
+    {name:"Growth", monthly:"£649", quarterly:"£585", text:"Fits up to 3 locations, up to 150 keywords and 4 pages a month, with 50 AI questions checked.", list:["150 keywords","50 AI questions","3 locations","4 pages per month"], interest:"Pricing tier: Growth"},
+    {name:"Scale", monthly:"£1,190", quarterly:"£1,070", text:"Fits up to 10 locations, up to 400 keywords and 8 pages a month, with 150 AI questions checked.", list:["400 keywords","150 AI questions","10 locations","8 pages per month"], interest:"Pricing tier: Scale"}
+  ];
+  var answers = {loc:0, key:0, page:0};
+  var isQuarterly = false;
+  var recName = $("recName"), recPrice = $("recPrice"), recText = $("recText"), recList = $("recList"), recCta = $("recCta");
+  function renderFinder(){
+    var maxVal = Math.max(answers.loc, answers.key, answers.page);
+    if (maxVal >= 3) {
+      recName.textContent = "Above Scale limits";
+      recPrice.innerHTML = "Talk to us";
+      recText.textContent = "Your needs sit above the Scale limits on at least one answer. Send an enquiry and a plan can be agreed with you directly.";
+      recList.innerHTML = "<li>More than 400 keywords, or more than 10 locations, or more than 8 pages a month</li>";
+      recCta.textContent = "Send an enquiry";
+      recCta.setAttribute("data-interest", "Other");
+    } else {
+      var t = TIERS[maxVal];
+      recName.textContent = t.name;
+      recPrice.innerHTML = (isQuarterly ? t.quarterly : t.monthly) + " <small>per month</small>";
+      recText.textContent = t.text;
+      recList.innerHTML = t.list.map(function(x){ return "<li>" + x + "</li>"; }).join("");
+      recCta.textContent = "Request this tier";
+      recCta.setAttribute("data-interest", t.interest);
+    }
+  }
+  document.querySelectorAll(".opts").forEach(function(group){
+    group.querySelectorAll(".opt").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        group.querySelectorAll(".opt").forEach(function(b){ b.setAttribute("aria-pressed","false"); });
+        btn.setAttribute("aria-pressed","true");
+        answers[group.getAttribute("data-q")] = parseInt(btn.getAttribute("data-val"), 10);
+        renderFinder();
+        if (!reduceMotion && recName.animate) { recName.animate([{opacity:0, transform:"translateY(6px)"},{opacity:1, transform:"none"}], {duration:320, easing:"ease-out"}); }
+      });
+    });
+  });
+
+  /* Preselect interest and go to contact */
+  function goToContact(interest, msg){
+    var sel = $("inInterest");
+    if (interest) { sel.value = interest; }
+    var msgEl = $("inMsg");
+    if (msg && !msgEl.value) { msgEl.value = msg; }
+    $("contact").scrollIntoView({behavior: reduceMotion ? "auto" : "smooth"});
+    setTimeout(function(){ $("inName").focus({preventScroll:true}); }, reduceMotion ? 0 : 650);
+  }
+  document.querySelectorAll("a[data-interest]").forEach(function(a){
+    a.addEventListener("click", function(){ $("inInterest").value = a.getAttribute("data-interest"); });
+  });
+  document.querySelectorAll(".tier-cta").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      goToContact(btn.getAttribute("data-tier"), "Hello, I would like to discuss the " + btn.getAttribute("data-tier").replace("Pricing tier: ", "") + " tier. My business is listed below.");
+    });
+  });
+  recCta.addEventListener("click", function(){
+    var interest = recCta.getAttribute("data-interest") || "Pricing tier: Starter";
+    var tierName = recName.textContent;
+    goToContact(interest, tierName === "Above Scale limits" ? "Hello, my needs sit above the Scale limits. Please contact me to discuss a plan." : "Hello, I used the tier finder and " + tierName + " fits my needs. Please contact me to discuss it.");
+  });
+
+  /* Contact form */
+  var form = $("enquiryForm"), statusBox = $("formStatus"), summaryBox = $("summaryBox"), summaryActions = $("summaryActions"), mailtoBtn = $("mailtoBtn");
+  function setInvalid(id, bad){ $(id).classList.toggle("invalid", bad); return !bad; }
+  function validUrl(v){
+    var s = v.trim();
+    if (!/^https?:\/\//i.test(s)) { s = "https://" + s; }
+    try { var u = new URL(s); return u.hostname.indexOf(".") > 0 ? s : null; } catch(e){ return null; }
+  }
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    statusBox.className = "form-status"; statusBox.textContent = "";
+    var honeypot = form.querySelector('input[name="company_website2"]');
+    if (honeypot && honeypot.value) {
+      statusBox.className = "form-status show ok";
+      statusBox.textContent = "Thanks, your message has been sent. We will reply by email.";
+      return;
+    }
+    var name = $("inName").value.trim(), biz = $("inBiz").value.trim(), siteRaw = $("inSite").value.trim(),
+        email = $("inEmail").value.trim(), country = $("inCountry").value, interest = $("inInterest").value,
+        msg = $("inMsg").value.trim(), consent = $("inConsent").checked;
+    var site = siteRaw ? validUrl(siteRaw) : null;
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    var ok = true;
+    ok = setInvalid("fName", !name) && ok;
+    ok = setInvalid("fBiz", !biz) && ok;
+    ok = setInvalid("fSite", !site) && ok;
+    ok = setInvalid("fEmail", !emailOk) && ok;
+    ok = setInvalid("fMsg", !msg) && ok;
+    $("consentErr").style.display = consent ? "none" : "block";
+    $("fConsent").style.borderColor = consent ? "" : "var(--red)";
+    if (!consent) { ok = false; }
+    if (!ok) {
+      statusBox.className = "form-status show bad";
+      statusBox.textContent = "Please check the fields marked above. Your details have been kept, so you do not need to retype them.";
+      var firstBad = form.querySelector(".field.invalid input, .field.invalid textarea");
+      if (firstBad) { firstBad.focus(); }
+      return;
+    }
+    var body = [
+      "Name: " + name, "Business name: " + biz, "Business website: " + site, "Work email: " + email,
+      "Country: " + (country || "Not given"), "Interested in: " + (interest || "Not given"), "",
+      "Message:", msg, "", "Consent given: I agree to xylvar using these details to reply to my enquiry."
+    ].join("\n");
+    mailtoBtn.href = "mailto:info@xylvar.top?subject=" + encodeURIComponent("Audit enquiry: " + biz) + "&body=" + encodeURIComponent(body);
+    summaryBox.textContent = "Your enquiry is ready to send:\n\n" + body;
+    summaryBox.classList.add("show");
+    summaryActions.classList.add("show");
+    statusBox.className = "form-status show ok";
+    statusBox.textContent = "Thanks, your enquiry is ready. Open your email app to send it to info@xylvar.top, or copy the text. Your details have been kept on this page.";
+    summaryBox.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"nearest"});
+  });
+  $("copyBtn").addEventListener("click", function(){
+    var text = summaryBox.textContent.replace("Your enquiry is ready to send:\n\n", "");
+    var b = $("copyBtn");
+    function done(){ b.textContent = "Copied"; setTimeout(function(){ b.textContent = "Copy enquiry text"; }, 2000); }
+    function fallbackCopy(t){
+      var ta = document.createElement("textarea");
+      ta.value = t; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); } catch(err){}
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done, function(){ fallbackCopy(text); done(); });
+    } else { fallbackCopy(text); done(); }
+  });
+  $("editBtn").addEventListener("click", function(){
+    summaryBox.classList.remove("show"); summaryActions.classList.remove("show");
+    statusBox.className = "form-status"; statusBox.textContent = "";
+    $("inName").focus();
+  });
+  ["inName","inBiz","inSite","inEmail","inMsg"].forEach(function(id){
+    $(id).addEventListener("input", function(){ this.closest(".field").classList.remove("invalid"); });
+  });
+
+  /* Active nav */
+  var sections = ["services","how-it-works","pricing","sample-audit","faq","about"];
+  var navLinks = document.querySelectorAll("nav.main a");
+  var ticking = false;
+  function updateNav(){
+    ticking = false;
+    var current = "";
+    sections.forEach(function(id){
+      var el = $(id);
+      if (el && el.getBoundingClientRect().top <= 160) { current = id; }
+    });
+    var contact = $("contact");
+    if (contact && contact.getBoundingClientRect().top <= 160) { current = ""; }
+    navLinks.forEach(function(a){ a.classList.toggle("active", a.getAttribute("href") === "#" + current); });
+  }
+  window.addEventListener("scroll", function(){ if (!ticking) { ticking = true; requestAnimationFrame(updateNav); } }, {passive:true});
+  updateNav();
+})();
+</script>
+</body>
+</html>
