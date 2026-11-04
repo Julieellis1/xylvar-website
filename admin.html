@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>xylvar admin</title>
+<style>body{font-family:system-ui,sans-serif;max-width:1100px;margin:24px auto;padding:0 16px;color:#111}table{border-collapse:collapse;width:100%;font-size:.85rem}th,td{border:1px solid #ddd;padding:6px 8px;text-align:left;vertical-align:top}button{padding:8px 14px;margin:4px 4px 4px 0;cursor:pointer}input{padding:8px;width:320px;max-width:100%}#out{white-space:pre-wrap;background:#f6f6f6;padding:12px;overflow:auto}</style>
+</head><body>
+<h1>xylvar admin</h1>
+<p>Not linked from the public site. Enter the admin token set in Dokploy (ADMIN_TOKEN). The token is sent as a header, never in the URL, and is kept in this browser only.</p>
+<label>Admin token <input id="token" type="password" autocomplete="off"></label>
+<button id="save">Use this token</button>
+<p>
+<button data-tab="leads">Leads</button>
+<button data-tab="subscribers">Subscribers</button>
+<button data-tab="email-log">Email log</button>
+<button id="csv">Download CSV of current view</button>
+</p>
+<div id="out">Pick a view.</div>
+<script>
+let current=[], currentTab="leads";
+const out=document.getElementById("out");
+function token(){return sessionStorage.getItem("xylvar-admin-token")||"";}
+document.getElementById("save").onclick=()=>{sessionStorage.setItem("xylvar-admin-token",document.getElementById("token").value);out.textContent="Token saved for this tab only. Pick a view.";};
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=async()=>{
+  currentTab=b.dataset.tab;
+  const r=await fetch("/api/admin/"+currentTab,{headers:{"x-admin-token":token()}});
+  const j=await r.json();
+  if(!r.ok){out.textContent="Error: "+(j.message||r.status);current=[];return;}
+  current=j;
+  if(!j.length){out.textContent="No rows yet.";return;}
+  const keys=Object.keys(j[0]);
+  out.innerHTML="<table><tr>"+keys.map(k=>"<th>"+k+"</th>").join("")+"</tr>"+j.map(row=>"<tr>"+keys.map(k=>"<td>"+String(row[k]??"").replace(/</g,"&lt;")+"</td>").join("")+"</tr>").join("")+"</table>";
+});
+document.getElementById("csv").onclick=()=>{
+  if(!current.length){out.textContent="Load a view first.";return;}
+  const keys=Object.keys(current[0]);
+  const esc=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
+  const csv=[keys.join(","),...current.map(r=>keys.map(k=>esc(r[k])).join(","))].join("\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="xylvar-"+currentTab+".csv";a.click();
+};
+</script>
+</body></html>

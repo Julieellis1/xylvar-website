@@ -1,0 +1,1 @@
+{"dependencies":{"express":"^4.21.2","pg":"^8.13.1"},"description":"xylvar.top: static site plus a small server for contact/audit leads, newsletter signups, email log and an admin view.","engines":{"node":">=20"},"name":"xylvar-site-server","private":true,"scripts":{"start":"node server/index.js"},"type":"module","version":"1.0.0"}

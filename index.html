@@ -987,13 +987,31 @@ footer ul{display:grid;gap:10px;font-size:.95rem}
     <h2 class="legal-title">Privacy and terms, in plain language.</h2>
     <div class="legal">
       <article id="privacy"><h3><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg>Privacy notice</h3>
-        <p>What is collected: only the details you send through the contact form.</p>
-        <ul><li><b>Why:</b> to reply to your enquiry.</li><li><b>Storage:</b> form messages are delivered by email.</li><li><b>No sale</b> of personal data. No newsletter subscription unless you ask for one separately.</li><li>No analytics, advertising or social tracker is used on this site in this version.</li></ul>
+        <p>What is collected: the details you send through the contact form, and, only if you sign up, your name and email for the newsletter.</p>
+        <ul><li><b>Why:</b> to reply to your enquiry, and to send newsletter emails to subscribers.</li><li><b>Storage:</b> enquiries and newsletter signups are stored on the xylvar server with the date, so they can be followed up and logged. Email sending attempts are logged with the address, subject and result, not the message body.</li><li><b>No sale</b> of personal data. You can unsubscribe from the newsletter with one click at any time.</li><li>No analytics, advertising or social tracker is used on this site in this version.</li></ul>
       </article>
       <article id="terms"><h3><svg class="i" aria-hidden="true"><use href="#i-doc"/></svg>Terms notice</h3>
         <ul><li>Audits and reports are based on public information and dated snapshots.</li><li>AI answers change day to day, so AI results are not a promise of future mentions.</li><li>No ranking or AI mention is guaranteed.</li><li>Pricing is shown in the pricing section. Prices exclude VAT. The starting term is 3 months, then month to month.</li></ul>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="section" id="newsletter">
+  <div class="wrap">
+    <span class="eyebrow">Newsletter</span>
+    <h2>Get one useful SEO note, when there is something worth sending.</h2>
+    <p style="max-width:34rem;margin-top:16px">No fixed spam schedule. Sign up and you will get a welcome email, and you can unsubscribe with one click at any time.</p>
+    <form id="newsletterForm" novalidate aria-label="Newsletter signup form" style="max-width:34rem;margin-top:24px">
+      <div class="form-status" id="nlStatus" role="status" aria-live="polite"></div>
+      <div class="honeypot" aria-hidden="true"><label>Leave this field empty<input type="text" name="company_website2" tabindex="-1" autocomplete="off" /></label></div>
+      <div class="field"><label for="nlName">Your name (optional)</label><input id="nlName" name="name" type="text" autocomplete="name" /></div>
+      <div class="field"><label for="nlEmail">Work email *</label><input id="nlEmail" name="email" type="email" autocomplete="email" required /></div>
+      <div class="field consent" style="margin-bottom:8px"><input id="nlConsent" type="checkbox" required /><label for="nlConsent">I agree to xylvar sending me newsletter emails. I can unsubscribe at any time. *</label></div>
+      <button class="btn btn-dark" type="submit" style="margin-top:14px">Subscribe <svg class="i" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+      <p class="form-fine">Your address is stored only for the newsletter. It is never sold.</p>
+    </form>
   </div>
 </section>
 
@@ -1019,7 +1037,7 @@ footer ul{display:grid;gap:10px;font-size:.95rem}
         <p class="foot-about">xylvar helps businesses that need SEO, anywhere in the world, including Australia and Nigeria. Audit first, then monthly work and a monthly report by email.</p>
         <p style="margin-top:14px"><a href="mailto:info@xylvar.top" style="font-weight:600">info@xylvar.top</a></p>
       </div>
-      <div><h4>Pages</h4><ul><li><a href="#services">Services</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#sample-audit">Sample audit</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Pages</h4><ul><li><a href="#services">Services</a></li><li><a href="#how-it-works">How it works</a></li><li><a href="#sample-audit">Sample audit</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="#about">About</a></li><li><a href="#contact">Contact</a></li><li><a href="#newsletter">Newsletter</a></li></ul></div>
       <div><h4>Notices</h4><ul><li><a href="#privacy">Privacy notice</a></li><li><a href="#terms">Terms notice</a></li><li><a href="#contact">Request an audit</a></li></ul></div>
     </div>
     <div class="foot-note"><span>&copy; 2026 xylvar. Pronounced ZIL-var.</span><span>Prices exclude VAT. 3 month starting term, then month to month.</span><span>Developed by <a href="https://teta.dpdns.org">Teta Digitals</a>.</span></div>
@@ -1190,7 +1208,7 @@ footer ul{display:grid;gap:10px;font-size:.95rem}
     if (!/^https?:\/\//i.test(s)) { s = "https://" + s; }
     try { var u = new URL(s); return u.hostname.indexOf(".") > 0 ? s : null; } catch(e){ return null; }
   }
-  form.addEventListener("submit", function(e){
+  form.addEventListener("submit", async function(e){
     e.preventDefault();
     statusBox.className = "form-status"; statusBox.textContent = "";
     var honeypot = form.querySelector('input[name="company_website2"]');
@@ -1225,14 +1243,55 @@ footer ul{display:grid;gap:10px;font-size:.95rem}
       "Country: " + (country || "Not given"), "Interested in: " + (interest || "Not given"), "",
       "Message:", msg, "", "Consent given: I agree to xylvar using these details to reply to my enquiry."
     ].join("\n");
-    mailtoBtn.href = "mailto:info@xylvar.top?subject=" + encodeURIComponent("Audit enquiry: " + biz) + "&body=" + encodeURIComponent(body);
-    summaryBox.textContent = "Your enquiry is ready to send:\n\n" + body;
-    summaryBox.classList.add("show");
-    summaryActions.classList.add("show");
-    statusBox.className = "form-status show ok";
-    statusBox.textContent = "Thanks, your enquiry is ready. Open your email app to send it to info@xylvar.top, or copy the text. Your details have been kept on this page.";
+    statusBox.className = "form-status show";
+    statusBox.textContent = "Sending your enquiry...";
+    try {
+      var resp = await fetch("/api/contact", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({name: name, business: biz, website: site, email: email, country: country, interest: interest, message: msg, consent: true})});
+      var data = await resp.json().catch(function(){ return {}; });
+      if (resp.ok && data.status === "success") {
+        statusBox.className = "form-status show ok";
+        statusBox.textContent = data.message || "Thanks - your message is with us. We'll reply within one working day.";
+        summaryBox.classList.remove("show");
+        summaryActions.classList.remove("show");
+        return;
+      }
+      if (resp.status === 400 || resp.status === 429) {
+        statusBox.className = "form-status show bad";
+        statusBox.textContent = data.message || "Please check the fields marked above.";
+        return;
+      }
+      throw new Error("server unavailable");
+    } catch (err) {
+      mailtoBtn.href = "mailto:info@xylvar.top?subject=" + encodeURIComponent("Audit enquiry: " + biz) + "&body=" + encodeURIComponent(body);
+      summaryBox.textContent = "Your enquiry is ready to send:\n\n" + body;
+      summaryBox.classList.add("show");
+      summaryActions.classList.add("show");
+      statusBox.className = "form-status show ok";
+      statusBox.textContent = "The server could not be reached, so your enquiry is ready to send by email instead. Open your email app to send it to info@xylvar.top, or copy the text.";
+    }
     summaryBox.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"nearest"});
   });
+  /* Newsletter form */
+  var nlForm = $("newsletterForm");
+  if (nlForm) {
+    nlForm.addEventListener("submit", async function(e){
+      e.preventDefault();
+      var st = $("nlStatus"), em = $("nlEmail").value.trim(), nm = $("nlName").value.trim(), ok = $("nlConsent").checked;
+      var hp = nlForm.querySelector('input[name="company_website2"]');
+      if (hp && hp.value) { st.className = "form-status show ok"; st.textContent = "You're subscribed. Check your inbox for a welcome email."; return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em) || !ok) { st.className = "form-status show bad"; st.textContent = "Please enter a valid email and tick the consent box."; return; }
+      st.className = "form-status show"; st.textContent = "Subscribing...";
+      try {
+        var r = await fetch("/api/newsletter", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({email: em, name: nm, consent: true})});
+        var d = await r.json().catch(function(){ return {}; });
+        if (r.ok && d.status === "success") { st.className = "form-status show ok"; st.textContent = d.message || "You're subscribed. Check your inbox for a welcome email."; nlForm.reset(); return; }
+        st.className = "form-status show bad"; st.textContent = d.message || "Your signup could not be saved.";
+      } catch (err) {
+        st.className = "form-status show bad"; st.textContent = "The server could not be reached. You can still subscribe by emailing info@xylvar.top with the subject Subscribe.";
+      }
+    });
+  }
+
   $("copyBtn").addEventListener("click", function(){
     var text = summaryBox.textContent.replace("Your enquiry is ready to send:\n\n", "");
     var b = $("copyBtn");
