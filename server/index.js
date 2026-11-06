@@ -13,6 +13,14 @@
  *   GET  /api/audit       - lookup one audit by its download code (noindex)
  *   GET  /api/audit/download - stream one audit PDF by code (noindex)
  *   POST /api/admin/audits, GET /api/admin/audits - seed and list audits, token-protected
+ *   GET  /api/admin/audits/:code/downloads - one log row per download, token-protected
+ *   Download counts are split: prospect_download_count counts only
+ *   unmarked downloads (a prospect following the emailed link), while
+ *   test_download_count counts downloads marked ?test=1 or header
+ *   x-audit-test: 1, which our own verification downloads must use.
+ *   The legacy download_count total still counts both, and old audits
+ *   start with both new counts at 0, because downloads before this
+ *   change cannot be separated afterwards.
  *
  * Storage: Postgres when DATABASE_URL is set (the Dokploy setup), with
  * tables created on boot. Without DATABASE_URL it falls back to a local
@@ -113,6 +121,28 @@ async function initStorage() {
         download_count INT NOT NULL DEFAULT 0,
         last_downloaded_at TIMESTAMPTZ,
         created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+      );
+      -- Prospect vs test downloads: download_count is the legacy total and
+      -- mixes both, because every download before this change was counted
+      -- the same way and cannot be separated afterwards. From here on,
+      -- prospect_download_count counts only downloads without the test
+      -- marker, test_download_count counts only marked test downloads,
+      -- and audit_download_log keeps one row per download so a count can
+      -- be checked against its own evidence. Old audits start with both
+      -- new counts at 0, which means "unknown before this change", not
+      -- "no prospect ever downloaded it".
+      ALTER TABLE audit_downloads
+        ADD COLUMN IF NOT EXISTS prospect_download_count INT NOT NULL DEFAULT 0,
+        ADD COLUMN IF NOT EXISTS test_download_count INT NOT NULL DEFAULT 0,
+        ADD COLUMN IF NOT EXISTS last_prospect_downloaded_at TIMESTAMPTZ;
+      CREATE TABLE IF NOT EXISTS audit_download_log (
+        id BIGSERIAL PRIMARY KEY,
+        code TEXT NOT NULL,
+        is_test BOOLEAN NOT NULL DEFAULT FALSE,
+        ip_hash TEXT,
+        user_agent TEXT,
+        referer TEXT,
+        downloaded_at TIMESTAMPTZ NOT NULL DEFAULT now()
       );`);
     storageMode = "postgres";
   }
@@ -259,29 +289,65 @@ async function insertAudit(a) {
   d.audit_downloads.push({ ...a, download_count: 0, last_downloaded_at: null, created_at: new Date().toISOString() });
   fileSave(d);
 }
-async function recordAuditDownload(code) {
+async function recordAuditDownload(code, meta = {}) {
   const c = String(code || "").trim().toUpperCase();
+  const isTest = meta.isTest === true;
+  const ipHash = meta.ip ? crypto.createHash("sha256").update(String(meta.ip)).digest("hex").slice(0, 16) : null;
+  const userAgent = String(meta.userAgent || "").slice(0, 200) || null;
+  const referer = String(meta.referer || "").slice(0, 200) || null;
   if (pool) {
-    await pool.query(`UPDATE audit_downloads SET download_count = download_count + 1, last_downloaded_at = now() WHERE code = $1`, [c]);
+    await pool.query(
+      `INSERT INTO audit_download_log (code, is_test, ip_hash, user_agent, referer) VALUES ($1,$2,$3,$4,$5)`,
+      [c, isTest, ipHash, userAgent, referer],
+    );
+    if (isTest) {
+      await pool.query(`UPDATE audit_downloads SET download_count = download_count + 1, test_download_count = test_download_count + 1, last_downloaded_at = now() WHERE code = $1`, [c]);
+    } else {
+      await pool.query(`UPDATE audit_downloads SET download_count = download_count + 1, prospect_download_count = prospect_download_count + 1, last_downloaded_at = now(), last_prospect_downloaded_at = now() WHERE code = $1`, [c]);
+    }
     return;
   }
   const d = fileData();
+  d.audit_download_log = d.audit_download_log || [];
+  d.audit_download_log.push({ id: crypto.randomUUID(), code: c, is_test: isTest, ip_hash: ipHash, user_agent: userAgent, referer, downloaded_at: new Date().toISOString() });
   const a = (d.audit_downloads || []).find((x) => x.code === c);
   if (a) {
     a.download_count = (a.download_count || 0) + 1;
+    if (isTest) a.test_download_count = (a.test_download_count || 0) + 1;
+    else {
+      a.prospect_download_count = (a.prospect_download_count || 0) + 1;
+      a.last_prospect_downloaded_at = new Date().toISOString();
+    }
     a.last_downloaded_at = new Date().toISOString();
-    fileSave(d);
   }
+  fileSave(d);
+}
+async function listAuditDownloadsAdmin(code, limit = 50) {
+  const c = String(code || "").trim().toUpperCase();
+  if (pool) {
+    const r = await pool.query(
+      `SELECT downloaded_at, is_test, ip_hash, user_agent, referer FROM audit_download_log WHERE code = $1 ORDER BY downloaded_at DESC LIMIT $2`,
+      [c, limit],
+    );
+    return r.rows;
+  }
+  const d = fileData();
+  return [...(d.audit_download_log || [])].filter((x) => x.code === c).reverse().slice(0, limit)
+    .map((x) => ({ downloaded_at: x.downloaded_at, is_test: x.is_test, ip_hash: x.ip_hash, user_agent: x.user_agent, referer: x.referer }));
 }
 async function listAuditsAdmin() {
   if (pool) {
-    const r = await pool.query(`SELECT code, business, website, report_date, download_count, last_downloaded_at FROM audit_downloads ORDER BY created_at DESC`);
+    const r = await pool.query(`SELECT code, business, website, report_date, download_count, prospect_download_count, test_download_count, last_downloaded_at, last_prospect_downloaded_at FROM audit_downloads ORDER BY created_at DESC`);
     return r.rows;
   }
   const d = fileData();
   return [...(d.audit_downloads || [])].reverse().map((a) => ({
     code: a.code, business: a.business, website: a.website, report_date: a.report_date,
-    download_count: a.download_count || 0, last_downloaded_at: a.last_downloaded_at || null,
+    download_count: a.download_count || 0,
+    prospect_download_count: a.prospect_download_count || 0,
+    test_download_count: a.test_download_count || 0,
+    last_downloaded_at: a.last_downloaded_at || null,
+    last_prospect_downloaded_at: a.last_prospect_downloaded_at || null,
   }));
 }
 function validateAuditBody(b) {
@@ -552,8 +618,16 @@ app.get("/api/audit/download", noindex, async (req, res) => {
   }
   const file = path.join(AUDIT_DIR, a.pdf_file);
   if (!fs.existsSync(file)) return res.status(404).json({ status: "error", message: AUDIT_NOT_FOUND });
+  // A download is a test download only when the caller says so, with
+  // ?test=1 or header x-audit-test: 1. Our own verification downloads
+  // must use that marker from now on, so they never inflate the prospect
+  // count. A prospect following the emailed link has no marker, so their
+  // download counts as a prospect download. Test downloads are still
+  // logged, and still counted in the legacy total, so the old total
+  // stays comparable; only the prospect count is kept clean.
+  const isTest = String(req.query.test || "") === "1" || String(req.header("x-audit-test") || "") === "1";
   try {
-    await recordAuditDownload(a.code);
+    await recordAuditDownload(a.code, { isTest, ip, userAgent: req.header("user-agent") || "", referer: req.header("referer") || "" });
   } catch (err) {
     console.error("[audit] download record failed", err.message);
   }
@@ -574,6 +648,11 @@ app.post("/api/admin/audits", requireAdmin, async (req, res) => {
   res.status(201).json(auditPublic(v.value));
 });
 app.get("/api/admin/audits", requireAdmin, async (_req, res) => res.json(await listAuditsAdmin()));
+app.get("/api/admin/audits/:code/downloads", requireAdmin, async (req, res) => {
+  const a = await getAudit(String(req.params.code || ""));
+  if (!a) return res.status(404).json({ status: "error", message: AUDIT_NOT_FOUND });
+  res.json(await listAuditDownloadsAdmin(a.code));
+});
 
 // ---------- static site (allowlist only) ----------
 const ALLOWED = new Set(["index.html", "xylvar-website.html", "favicon.ico", "apple-touch-icon.png", "admin.html", ".nojekyll"]);
